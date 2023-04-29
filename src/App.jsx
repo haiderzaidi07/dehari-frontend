@@ -3,8 +3,10 @@ import Landing from "./pages/Landing";
 import Login from './pages/login';
 import Register from './pages/Register';
 import Homepage from './pages/homepage';
+import ProfileSetup from './pages/ProfileSetup';
 import { useEffect } from 'react';
 import axios from 'axios';
+import ProtectedRoutes from './components/ProtectedRoutes';
 
 function App() {
   
@@ -50,7 +52,9 @@ function App() {
         <Route path='/' element={<Landing />} />
         <Route path='/users/login' element={ user ? <Navigate to='/homepage' /> : <Login />} />
         <Route path='/users/register' element={<Register />} />
-        <Route path='/homepage' element={ user ? <Homepage user={user} /> : <Navigate to='/users/login' />} />
+        <Route path='/users/profileSetup' element={<ProfileSetup />} />
+        <Route path='/homepage' element={ 
+           <ProtectedRoutes><Homepage user={user} /> </ProtectedRoutes>} />
       </Routes>
     </div>
   );

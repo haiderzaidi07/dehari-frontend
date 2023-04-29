@@ -1,5 +1,8 @@
 import { useState } from 'react'
 import axios from 'axios'
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 const Login = () => {
 
@@ -11,8 +14,22 @@ const Login = () => {
       username,
       password,
     })
-    .then(res => console.log(res))
-    .catch(err => console.error(err))
+    .then(res => 
+      {
+        console.log(res.data)
+        cookies.set("TOKEN", res.data.token, {
+          path:"/",
+        })
+        window.location.href = "/homepage";
+      })
+    .catch((e) =>
+    {alert(
+      "Seems like to you entered the wrong password/ username please try again"
+    );
+    setUsername("");
+    setPassword("");
+    console.log(e);
+  })
       
   }
 

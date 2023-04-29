@@ -13,9 +13,7 @@ const homepage = ({user}) => {
                 <li className="mx-4 my-2">About</li>
                 <li className="mx-4 my-2">Contact Us</li>
                 <a href="/users/signOut">
-                    <button
-                      className="rounded-full bg-emerald-400 text-white mx-2 my-2 px-4 py-1"
-                      >
+                    <button className="rounded-full bg-emerald-400 text-white mx-2 my-2 px-4 py-1">
                       Sign Out
                     </button>
                 </a>

@@ -1,0 +1,22 @@
+{
+  "pages": {
+    "main": {
+      "componentData": [
+        {
+          "x": 10,
+          "y": 10,
+          "type": "EXISTING_COMPONENT",
+          "width": 1440,
+          "height": 1024,
+          "filePath": "/src/components/Profile_Setup.tsx",
+          "exportName": "default"
+        }
+      ]
+    }
+  },
+  "version": {
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}
