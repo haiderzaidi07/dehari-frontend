@@ -5,6 +5,8 @@ import Register from './pages/Register';
 import Homepage from './pages/homepage';
 import { useEffect } from 'react';
 import axios from 'axios';
+import ProfileSetup from './pages/ProfileSetup';
+import AdList from './pages/AdList';
 
 function App() {
   
@@ -51,6 +53,8 @@ function App() {
         <Route path='/users/login' element={ user ? <Navigate to='/homepage' /> : <Login />} />
         <Route path='/users/register' element={<Register />} />
         <Route path='/homepage' element={ user ? <Homepage user={user} /> : <Navigate to='/users/login' />} />
+        <Route path='/users/profileSetup' element={<ProfileSetup />} />
+        <Route path='/ad/list' element={<AdList />} />
       </Routes>
     </div>
   );
