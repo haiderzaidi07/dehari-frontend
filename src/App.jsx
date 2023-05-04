@@ -7,10 +7,17 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import ProfileSetup from './pages/ProfileSetup';
 import AdList from './pages/AdList';
+import Profile from './pages/Profile';
+import Nav from './components/Nav';
+import PostAd from './pages/PostAd';
+import EditProfile from './pages/EditProfile';
+
+
 
 function App() {
   
-  const user = false
+  // const user = false
+  const user=true
 
   useEffect(() => {
 
@@ -47,7 +54,7 @@ function App() {
   
   return (
     <div className="App">
-      
+      <Nav/>
       <Routes>
         <Route path='/' element={<Landing />} />
         <Route path='/users/login' element={ user ? <Navigate to='/homepage' /> : <Login />} />
@@ -55,6 +62,9 @@ function App() {
         <Route path='/homepage' element={ user ? <Homepage user={user} /> : <Navigate to='/users/login' />} />
         <Route path='/users/profileSetup' element={<ProfileSetup />} />
         <Route path='/ad/list' element={<AdList />} />
+        <Route path='/ad/post' element={<PostAd/>} />
+        <Route path='/users/profile' element={<Profile/>} />
+        <Route path='/users/editProfile' element={<EditProfile/>} />
       </Routes>
     </div>
   );
