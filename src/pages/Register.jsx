@@ -15,10 +15,8 @@ const Register = () => {
       password,
       password2
     })
-    .then((result) => {
-        window.location.href = "/login";
-      })
-    .catch((e) => (e = new Error()))
+    .then(res => console.log(res))
+    .catch(err => console.error(err))
   }
 
   return (
