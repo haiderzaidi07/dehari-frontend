@@ -1,7 +1,6 @@
-import React,{useEffect,useState} from "react";
+import React,{useState} from "react";
 import ConfirmationPopUp from "../components/ConfirmationPopUp";
 const PostAd = () => {
-    const {useEffect, useState } = React;
     const [postAdBtn, setPostAdBtn] = useState(false)
   return (
 
@@ -27,7 +26,7 @@ const PostAd = () => {
           </label>
           <input
             type="file"
-            className="file:bg-emerald-400 file:rounded-md file:px-2 file:border-none file:shadow-md file:text-white"
+            className="file:bg-emerald-400 file:rounded-md file:px-3 file:pb-2 file:my-10 file:border-none file:shadow-md file:text-white"
           />
           <div className="flex w-1/5 items-center my-10">
             <label
@@ -40,13 +39,14 @@ const PostAd = () => {
               className="my-2 mx-4 px-2 border-2 border-emerald-500 inline-block w-20"
               type="text"
             />
+            <span className="text-emerald-500 font-bold">Rupees</span>
           </div>
+        </form>
           <button onClick={()=>{setPostAdBtn(true)}} className="mx-auto block bg-emerald-400 rounded-full py-2 px-8 font-bold text-white mt-10 hover:-translate-y-1 transition-transform active:translate-y-1">
             Post Ad
           </button>
-        </form>
       </div>
-      <ConfirmationPopUp trigger={postAdBtn} setTrigger={setPostAdBtn} />
+      <ConfirmationPopUp trigger={postAdBtn} setTrigger={setPostAdBtn} setPrevTrig={()=>{}}/>
     </div>
   );
 };

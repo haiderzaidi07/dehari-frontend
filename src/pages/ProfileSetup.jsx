@@ -1,132 +1,148 @@
-// import Ellipse1 from "assets/Ellipse1";
-// import Ellipse8 from "assets/Ellipse8";
-// import MaskGroup from "assets/MaskGroup";
-// import MdiImageEdit from "assets/MdiImageEdit";
-const ProfileSetup = (props) => {
-  return <div className="relative bg-white text-center w-[1440px] h-[1024px] overflow-clip">
-    <div  >
-      <div className="left-0 top-0 absolute bg-white w-[1440px] h-[87px]"   />
-    </div>
-    <div  >
-      <div className="absolute w-[1597px] h-[86px] left-[1461px] top-[1146px] bg-[rgba(217,217,217,1)]"   />
-    </div>
-    <div className={`font-bold font-['Inter'] text-[rgba(60,181,30,1)]`}  >
-      <p className="absolute m-0 left-[89px] top-[30px] text-[31.26px] leading-[normal]"  >
-        ehari
-      </p>
-    </div>
-    <div  >
-      <div className="absolute top-3 w-[65px] h-[62px] left-[19px]"  >
-        <div className="origin-top-left h-0 top-0 absolute w-[62px] left-[26.69px] outline outline-[2.41px] outline-[rgba(255,203,17,1)] [rotate:90deg]"   />
-        {/* <Ellipse1   /> */}
-        {/* <Ellipse8   /> */}
+import React,{useState} from 'react'
+
+const ProfileSetup = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [company, setCompany] = useState('');
+  const [position, setPosition] = useState('');
+  const [duration, setDuration] = useState('');
+  const [project, setProject] = useState('');
+  const [description, setDescription] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Perform any necessary logic with the form data
+    // e.g., send the data to an API or update state in a parent component
+    // Reset form fields if needed
+    setName('');
+    setEmail('');
+    setPhone('');
+    setCompany('');
+    setPosition('');
+    setDuration('');
+    setProject('');
+    setDescription('');
+  };
+
+  return (
+    <div className="container mx-auto py-8">
+      <h1 className="text-2xl font-bold my-4 p-4 text-emerald-500 shadow-md rounded-lg">User Profile Setup</h1>
+
+      {/* Personal Details Section */}
+      <div className='my-5 mb-10 bg-white shadow-lg opacity-60 hover:opacity-100 transition-all hover:translate-y-1 duration-500 rounded-lg p-6'>
+      <h2 className="text-xl font-bold mb-2">Personal Details</h2>
+      <form onSubmit={handleSubmit} >
+        <label htmlFor="name" className="block mb-2">Name:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-md"
+          required
+        />
+
+        <label htmlFor="email" className="block mb-2">Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-md"
+          required
+        />
+
+        <label htmlFor="phone" className="block mb-2">Phone:</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-md"
+          required
+        />
+      </form>
       </div>
+      <div className='my-5 mb-10 bg-white shadow-lg opacity-60 hover:opacity-100 transition-all hover:translate-y-1 duration-500 rounded-lg p-6'>
+      {/* Work Experience Section */}
+      <h2 className="text-xl font-bold mb-2">Work Experience</h2>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="company" className="block mb-2">Company:</label>
+        <input
+          type="text"
+          id="company"
+          name="company"
+          value={company}
+          onChange={(e) => setCompany(e.target.value)}
+          className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-md"
+          required
+        />
+
+        <label htmlFor="position" className="block mb-2">Position:</label>
+        <input
+          type="text"
+          id="position"
+          name="position"
+          value={position}
+          onChange={(e) => setPosition(e.target.value)}
+          className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-md"
+          required
+        />
+
+        <label htmlFor="duration" className="block mb-2">Duration:</label>
+        <input
+          type="text"
+          id="duration"
+          name="duration"
+          value={duration}
+          onChange={(e) => setDuration(e.target.value)}
+          className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-md"
+          required
+        />
+      </form>
+</div>
+      {/* Projects Section */}
+      <div className='my-5 mb-10 bg-white shadow-lg opacity-60 hover:opacity-100 transition-all hover:translate-y-1 duration-500 rounded-lg p-6'>
+
+      <h2 className="text-xl font-bold mb-2">Projects</h2>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="project" className="block mb-2">Project:</label>
+        <input
+          type="text"
+          id="project"
+          name="project"
+          value={project}
+          onChange={(e) => setProject(e.target.value)}
+          className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-md"
+          required
+        />
+
+        <label htmlFor="description" className="block mb-2">Description:</label>
+        <textarea
+          id="description"
+          name="description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-md"
+          required
+        ></textarea>
+      </form>
+</div>
+      {/* Submit Button */}
+      <button
+        type="submit"
+        onClick={handleSubmit}
+        className="px-6 py-2 bg-emerald-500 text-white rounded-md transition-all hover:text-emerald-500 hover:bg-white border-2 border-emerald-500 active:translate-y-1"
+      >
+        Save Profile
+      </button>
     </div>
-    <div className={`font-medium font-['Raleway'] text-[rgba(32,191,85,1)]`}  >
-      <p className="absolute text-5xl m-0 left-[576px] top-[123px] leading-[normal]"  >
-        Profile Setup
-      </p>
-    </div>
-    <div  >
-      <div className="left-0 absolute w-[1440px] h-[652px] top-[397px] [background:url(https://uortjlczjmucmpaqqhqm.supabase.co/storage/v1/object/public/firejet-converted-images/images/6cc8f85e60fab37007f4b028fb969dc3d143a93d.webp)_center_/_cover]"   />
-    </div>
-    <div className="font-normal"  >
-      <div className="absolute w-[1248px] h-[661px] left-[89px] top-[211px]"  >
-        <div className="left-0 top-0 absolute bg-white w-[381px] h-[661px] rounded-[25px] [box-shadow:0px_0px_0px_5px_rgba(32,_191,_85,_1)_inset] [box-shadow-width:5px]"   />
-        <div className="top-0 absolute bg-white w-[781px] h-[661px] left-[467px] rounded-[25px] [box-shadow:0px_0px_0px_5px_rgba(32,_191,_85,_1)_inset] [box-shadow-width:5px]"   />
-        <div className="absolute left-0 top-0 w-[196px] h-[196px]"  >
-          <div className="absolute w-[196px] left-[46.94%] right-[-46.94%] top-[39.29%] bottom-[-39.29%] overflow-clip h-[196px] rounded-[25px]"  >
-            {/* <MaskGroup   /> */}
-          </div>
-          {/* <MdiImageEdit   /> */}
-        </div>
-        <div className="absolute bg-white w-[289px] h-[131px] left-[46px] top-[348px] [box-shadow:0px_0px_0px_1px_rgba(32,_191,_85,_1)_inset] [box-shadow-width:1px]"   />
-        <p className={`absolute text-lg inline m-0 left-[50px] top-[326px] font-['Inter'] leading-[normal] text-[rgba(129,129,129,1)]`}  >
-          Biography:
-        </p>
-        <div className="absolute bg-white w-[289px] h-[47px] left-[517px] top-[79px] [box-shadow:0px_0px_0px_1px_rgba(32,_191,_85,_1)_inset] [box-shadow-width:1px]"   />
-        <p className={`absolute text-lg inline m-0 left-[517px] top-[57px] font-['Inter'] leading-[normal] text-[rgba(129,129,129,1)]`}  >
-          First Name:
-        </p>
-        <div className="absolute bg-white w-[289px] h-[47px] left-[517px] top-[185px] [box-shadow:0px_0px_0px_1px_rgba(32,_191,_85,_1)_inset] [box-shadow-width:1px]"   />
-        <p className={`absolute text-lg inline m-0 left-[517px] top-[163px] font-['Inter'] leading-[normal] text-[rgba(129,129,129,1)]`}  >
-          Phone Number:
-        </p>
-        <div className="absolute bg-white w-[289px] h-[47px] left-[517px] top-[305px] [box-shadow:0px_0px_0px_1px_rgba(32,_191,_85,_1)_inset] [box-shadow-width:1px]"   />
-        <p className={`absolute text-lg inline m-0 left-[517px] top-[283px] font-['Inter'] leading-[normal] text-[rgba(129,129,129,1)]`}  >
-          Your Skills:
-        </p>
-        <div className={`absolute text-white w-[133px] h-[43px] left-[835px] top-[307px] font-['Raleway']`}  >
-          <div className="inset-0 absolute w-[133px] bg-[rgba(32,191,85,1)] rounded-[50px]"   />
-          <p className="absolute text-lg inline m-0 top-[25.58%] bottom-[25.58%] left-[19.55%] right-[24.81%] leading-[normal]"  >
-            Add Skill
-          </p>
-        </div>
-        <div className={`absolute text-white w-[133px] h-[43px] left-[835px] top-[425px] font-['Raleway']`}  >
-          <div className="left-0 top-0 absolute w-[133px] h-[43px] bg-[rgba(32,191,85,1)] rounded-[50px]"   />
-          <p className="left-5 absolute text-lg inline m-0 top-[11px] leading-[normal]"  >
-            Add Image
-          </p>
-        </div>
-        <div className="absolute bg-white w-[289px] h-[47px] left-[517px] top-[425px] [box-shadow:0px_0px_0px_1px_rgba(32,_191,_85,_1)_inset] [box-shadow-width:1px]"   />
-        <div className="absolute bg-white w-[680px] h-[47px] left-[517px] top-[485px] [box-shadow:0px_0px_0px_1px_rgba(32,_191,_85,_1)_inset] [box-shadow-width:1px]"   />
-        <p className={`absolute text-lg inline m-0 left-[529px] top-[438px] font-['Raleway'] leading-[normal] text-[rgba(129,129,129,0.75)]`}  >
-          Title
-        </p>
-        <p className={`absolute text-lg inline m-0 left-[529px] top-[498px] font-['Raleway'] leading-[normal] text-[rgba(129,129,129,0.75)]`}  >
-          Description
-        </p>
-        <p className={`absolute text-lg inline m-0 left-[517px] top-[403px] font-['Inter'] leading-[normal] text-[rgba(129,129,129,1)]`}  >
-          Your Projects:
-        </p>
-        <div className={`absolute text-white w-[133px] h-[43px] left-[516px] top-[542px] font-['Raleway']`}  >
-          <div className="left-0 top-0 absolute w-[133px] h-[43px] bg-[rgba(32,191,85,1)] rounded-[50px]"   />
-          <p className="absolute text-lg inline m-0 left-[17px] top-[11px] leading-[normal]"  >
-            Add Project
-          </p>
-        </div>
-        <div className="absolute bg-white w-[289px] h-[47px] left-[911px] top-[190px] [box-shadow:0px_0px_0px_1px_rgba(32,_191,_85,_1)_inset] [box-shadow-width:1px]"   />
-        <p className={`absolute text-lg inline m-0 left-[911px] top-[168px] font-['Inter'] leading-[normal] text-[rgba(129,129,129,1)]`}  >
-          Email Address:
-        </p>
-        <div className="absolute bg-white w-[289px] h-[47px] left-[911px] top-[79px] [box-shadow:0px_0px_0px_1px_rgba(32,_191,_85,_1)_inset] [box-shadow-width:1px]"   />
-        <p className={`absolute text-lg inline m-0 left-[911px] top-[57px] font-['Inter'] leading-[normal] text-[rgba(129,129,129,1)]`}  >
-          Last Name:
-        </p>
-      </div>
-    </div>
-    <div className={`text-white font-normal font-['Raleway']`}  >
-      <div className="absolute w-[197px] h-[63.69px] left-[749px] top-[904px]"  >
-        <div className="left-0 top-0 absolute w-[197px] h-[63.69px] bg-[rgba(32,191,85,1)] rounded-[74.06px]"   />
-        <p className="absolute inline m-0 left-[25.18px] top-[16.29px] text-[26.66px] leading-[normal]"  >
-          Save Profile
-        </p>
-      </div>
-    </div>
-    <div className={`text-white font-normal font-['Raleway']`}  >
-      <div className="absolute w-[197px] h-[63.69px] left-[448px] top-[904px]"  >
-        <div className="left-0 top-0 absolute w-[197px] h-[63.69px] bg-[rgba(32,191,85,1)] rounded-[74.06px]"   />
-        <p className="absolute inline m-0 left-[54.18px] top-[16.29px] text-[26.66px] leading-[normal]"  >
-          Cancel
-        </p>
-      </div>
-    </div>
-  </div>;
+  );
 }
-ProfileSetup.defaultProps = {
-className: "",
-style: {}
-};
 
 export default ProfileSetup
-/**
-* This component was generated from Figma with FireJet.
-* Learn more at https://www.firejet.io
-*
-* README:
-* The output code may look slightly different when copied to your codebase. To fix this:
-* 1. Include the necessary fonts. The required fonts are imported from public/index.html
-* 2. Include the global styles. They can be found in App.css
-*
-* Note: Step 2 is not required for tailwind.css output
-*/
+

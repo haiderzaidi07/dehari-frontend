@@ -1,11 +1,19 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import CongratulationsPopUp from './CongratulationsPopUp'
 
 const ConfirmationPopUp = ({trigger,setTrigger,setPrevTrig}) => {
   const [congratulationsPopUpBtn, setCongratulationsPopUpBtn] = useState(false)
   const [hidePrev, setHidePrev] = useState(true)
-
-
+  
+  useEffect(()=>{
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const interval=setTimeout(()=>{
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.body.classList.toggle('overflow-hidden')
+      clearTimeout(interval);
+    },500)
+   setPrevTrig(hidePrev)
+  },[trigger,hidePrev])
 
   return trigger&& hidePrev? (
     <>

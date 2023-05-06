@@ -1,8 +1,10 @@
 import React,{useState} from 'react'
 import ConfirmationPopUp from '../components/ConfirmationPopUp';
 
+
 const EditProfile = () => {
   const [confirmationPopUp,setConfirmationPopUp]=useState(false);
+
   return (
     <>
       <img class="absolute top-0 h-80 -z-10 scale-x-150 w-full " src="img/gradient.svg" alt="gradient"></img>
@@ -31,7 +33,8 @@ const EditProfile = () => {
               </form>
         </section>
     </div>
-    <ConfirmationPopUp trigger={confirmationPopUp} setTrigger={setConfirmationPopUp}/>
+    
+    <ConfirmationPopUp trigger={confirmationPopUp} setTrigger={setConfirmationPopUp} setPrevTrig={()=>{}}/>
     </>
   );
 };

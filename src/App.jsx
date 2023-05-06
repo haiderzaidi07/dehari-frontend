@@ -11,6 +11,8 @@ import Profile from './pages/Profile';
 import Nav from './components/Nav';
 import PostAd from './pages/PostAd';
 import EditProfile from './pages/EditProfile';
+import About from './pages/About';
+import Contact from './pages/Contact';
 
 
 
@@ -60,6 +62,8 @@ function App() {
         <Route path='/users/login' element={ user ? <Navigate to='/homepage' /> : <Login />} />
         <Route path='/users/register' element={<Register />} />
         <Route path='/homepage' element={ user ? <Homepage user={user} /> : <Navigate to='/users/login' />} />
+        <Route path='/about' element={<About/>} />
+        <Route path='/contactUs' element={<Contact/>} />
         <Route path='/users/profileSetup' element={<ProfileSetup />} />
         <Route path='/ad/list' element={<AdList />} />
         <Route path='/ad/post' element={<PostAd/>} />

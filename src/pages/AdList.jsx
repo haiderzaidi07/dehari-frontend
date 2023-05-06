@@ -8,12 +8,10 @@ const AdList = () => {
   
 
     return (
-    <div>
-      
-    {/* <div id="black_shade" class="absolute bg-black h-[2000px] w-full top-0 opacity-70"></div> */}
+    <>
     {/* <!-- Ad list --> */}
-    <section class="bg-red-500">
-      <div class="mt-32 h-screen w-2/3 mx-auto bg-white">
+    <section class="bg-gradient-to-b pt-32 from-emerald-500 to-indigo-300">
+      <div class="h-screen w-2/3 mx-auto bg-white rounded-t-xl">
         <div class="border-[1px] border-slate-300 p-6 rounded-t-xl">
           <h1 class="text-3xl my-4 font-bold text-emerald-400">
             Jobs of your domain
@@ -55,7 +53,7 @@ const AdList = () => {
 
 
 
-    </div>
+    </>
   )
 }
 
