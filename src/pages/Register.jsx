@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import axios from 'axios'
 
+import Cookies from 'universal-cookie'
+const cookies = new Cookies()
+
 const Register = () => {
 
     const [username, setUsername] = useState("")
@@ -15,7 +18,12 @@ const Register = () => {
       password,
       password2
     })
-    .then(res => console.log(res))
+    .then(res =>{
+         
+      cookies.set('token', res.data.token, { path: '/' })
+        window.location.href = '/users/profileSetup';
+    }
+    )
     .catch(err => console.error(err))
   }
 

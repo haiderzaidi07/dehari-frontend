@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import Landing from "./pages/Landing";
-import Login from './pages/login';
+import Login from './pages/Login';
 import Register from './pages/Register';
 import Homepage from './pages/homepage';
 // import { useEffect } from 'react';
@@ -19,7 +19,11 @@ import Nav from './components/Nav';
 
 function App() {
   
-
+  /** Protected Routes
+   * All except Login Register, Landing
+   * 
+   * 
+   */
 
   
   return (

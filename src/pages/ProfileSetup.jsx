@@ -44,18 +44,9 @@ const ProfileSetup = () => {
           required
         />
 
-        <label htmlFor="email" className="block mb-2">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-md"
-          required
-        />
 
-        <label htmlFor="phone" className="block mb-2">Phone:</label>
+
+        {/* <label htmlFor="phone" className="block mb-2">Phone:</label>
         <input
           type="tel"
           id="phone"
@@ -64,7 +55,7 @@ const ProfileSetup = () => {
           onChange={(e) => setPhone(e.target.value)}
           className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-md"
           required
-        />
+        /> */}
       </form>
       </div>
       <div className='my-5 mb-10 bg-white shadow-lg opacity-60 hover:opacity-100 transition-all hover:translate-y-1 duration-500 rounded-lg p-6'>
