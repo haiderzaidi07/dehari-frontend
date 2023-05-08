@@ -94,6 +94,11 @@ const Nav = () => {
                       Register
                     </li>
                   </Link>
+                 
+                    <li  onClick={logout} className="px-4 py-2 hover:bg-gray-200 cursor-pointer transition-color duration-300 hover:text-emerald-500">
+                      Logout
+                    </li>
+                
                 </ul>
               )}
             </div>

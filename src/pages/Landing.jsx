@@ -1,8 +1,20 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom'
+import Cookies from "universal-cookie";
+
+const cookies = new Cookies();
+
+const Landing = () => {
+
+    useEffect(() => {
+      const token = cookies.get("token")
+      if (token) {
+        window.location.href = "/homepage"
+      }
+    }, [])
 
 
-const landing = () => {
+
   return (
     <div>
     
@@ -19,4 +31,4 @@ const landing = () => {
   )
 }
 
-export default landing
+export default Landing
