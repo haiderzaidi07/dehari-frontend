@@ -1,69 +1,36 @@
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Landing from "./pages/Landing";
 import Login from './pages/login';
 import Register from './pages/Register';
 import Homepage from './pages/homepage';
-import { useEffect } from 'react';
-import axios from 'axios';
+// import { useEffect } from 'react';
+// import axios from 'axios';
 import ProfileSetup from './pages/ProfileSetup';
 import AdList from './pages/AdList';
 import Profile from './pages/Profile';
-import Nav from './components/Nav';
+// import Nav from './components/Nav';
 import PostAd from './pages/PostAd';
 import EditProfile from './pages/EditProfile';
-import About from './pages/About';
-import Contact from './pages/Contact';
+// import Header from './Navbar/Header';
+import Nav from './components/Nav';
 
 
 
 function App() {
   
-  // const user = false
-  const user=true
 
-  useEffect(() => {
 
-    const getUser = () => {
 
-      axios.get('http://localhost:4500/users/getUser', {
-        withCredentials: true
-      })
-
-      // fetch("http://localhost:4500/users/getUser", {
-      //   method: "GET",
-      //   credentials: "include",
-      //   headers: {
-      //     Accept: "application/json",
-      //     "Content-Type": "application/json",
-      //     "Access-Control-Allow-Credentials": true,
-      //   },
-      // })
-      // .then((response) => {
-      //   if (response.status === 200) return response.json();
-      //   throw new Error("authentication has been failed!");
-      // })
-      .then((resObject) => {
-        console.log(resObject)
-        // setUser(resObject.user);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    }
-
-    getUser()
-  }, []);
   
   return (
     <div className="App">
       <Nav/>
       <Routes>
         <Route path='/' element={<Landing />} />
-        <Route path='/users/login' element={ user ? <Navigate to='/homepage' /> : <Login />} />
+        <Route path='/users/login' element={  <Login />} />
         <Route path='/users/register' element={<Register />} />
-        <Route path='/homepage' element={ user ? <Homepage user={user} /> : <Navigate to='/users/login' />} />
-        <Route path='/about' element={<About/>} />
-        <Route path='/contactUs' element={<Contact/>} />
+        <Route path='/users/logout' element={<Landing />} />
+        <Route path='/homepage' element={<Homepage /> } />
         <Route path='/users/profileSetup' element={<ProfileSetup />} />
         <Route path='/ad/list' element={<AdList />} />
         <Route path='/ad/post' element={<PostAd/>} />

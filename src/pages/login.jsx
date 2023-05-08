@@ -1,18 +1,33 @@
 import { useState } from 'react'
 import axios from 'axios'
 
+import Cookies from 'universal-cookie'
+const cookies = new Cookies()
+
 const Login = () => {
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
 
-  const postLogin = async () => {
+  const postLogin = async (e) => {
+    e.preventDefault()
+    
    await axios.post('http://localhost:4500/users/login', {
       username,
       password,
     })
-    .then(res => console.log(res))
-    .catch(err => console.error(err))
+    .then(res => {
+      
+      cookies.set('token', res.data.token, { path: '/' })
+      window.location.href = '/homepage';
+    })
+    .catch(err => {
+      console.error(err)
+      alert("Login failed")
+      setUsername("")
+      setPassword("")
+
+    })
       
   }
 

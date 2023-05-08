@@ -1,7 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
+
+
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [username, setUsername] = useState("")
+    
+    const getUser = () => {
+        setUsername(cookies.get("token").username)
+    }
+    
+
+
+    const logout = () => {
+        cookies.remove('token', { path: '/' });
+        window.location.href = '/';
+    }
+    
+    useEffect(() => {
+        const token = cookies.get("token");
+        if (token) {
+            setIsLoggedIn(true)
+            getUser()
+        }
+    }, [])
+
+    useEffect(() => {
+        console.log("Hello:", username);
+    }, [username]);
+
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
