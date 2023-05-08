@@ -11,8 +11,9 @@ const Register = () => {
     const [password, setPassword] = useState("")
     const [password2, setPassword2] = useState("")
 
-  const postRegister = () => {
-    axios.post('http://localhost:4500/users/register', {
+  const postRegister = async (e) => {
+    e.preventDefault()
+    await  axios.post('http://localhost:4500/users/register', {
       username,
       email,
       password,

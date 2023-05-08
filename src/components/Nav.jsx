@@ -38,6 +38,8 @@ const Nav = () => {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+
+  const auth = () => {
   return (
     <nav>
       <div className="flex justify-between items-center pr-5 pt-2">
@@ -78,23 +80,6 @@ const Nav = () => {
                       Profile
                     </li>
                   </Link>
-                  <Link to="/users/profileSetup">
-                    <li  onClick={toggleDropdown} className="px-4 py-2 hover:bg-gray-200 cursor-pointer transition-color duration-300 hover:text-emerald-500">
-                      Profile Setup
-                    </li>
-                  </Link>
-                  <Link to="/users/login">
-                    <li  onClick={toggleDropdown} className="px-4 py-2 hover:bg-gray-200 cursor-pointer transition-color duration-300 hover:text-emerald-500">
-                      Log In
-                    </li>
-                  </Link>
-
-                  <Link to="/users/register">
-                    <li  onClick={toggleDropdown} className="px-4 py-2 hover:bg-gray-200 cursor-pointer transition-color duration-300 hover:text-emerald-500">
-                      Register
-                    </li>
-                  </Link>
-                 
                     <li  onClick={logout} className="px-4 py-2 hover:bg-gray-200 cursor-pointer transition-color duration-300 hover:text-emerald-500">
                       Logout
                     </li>
@@ -108,6 +93,62 @@ const Nav = () => {
       <hr className="w-full h-[2px] bg-green-600" />
     </nav>
   );
+}
+
+const unAuth = () => {
+  return (
+    <nav>
+      <div className="flex justify-between items-center pr-5 pt-2">
+        <Link to="/">
+          <span className="text-green-600 mx-4 font-bold text-2xl">Dehari</span>
+        </Link>
+        <div className="flex">
+          <ul className="flex">
+            <Link to="/homepage">
+              <li className="mx-4 my-2 transition-colors hover:text-emerald-500 text-gray-500">
+                Home
+              </li>
+            </Link>
+            <Link to="/about">
+              <li className="mx-4 my-2 transition-colors hover:text-emerald-500 text-gray-500">
+                About
+              </li>
+            </Link>
+            <Link to="/contactUs">
+              <li className="mx-4 my-2 transition-colors hover:text-emerald-500 text-gray-500">
+                Contact Us
+              </li>
+            </Link>
+          </ul>
+          <Link to="/users/login">
+                <button
+                    className="rounded-full bg-emerald-400 text-white mx-2 my-2 px-4 py-1"
+                >
+                    Log In
+                </button>
+            </Link>
+            
+            <Link to="/users/register">
+                <button
+                    className="rounded-full bg-emerald-400 text-white mx-2 my-2 px-4 py-1"
+                >
+                    Register
+                </button>
+            </Link>
+
+        </div>
+      </div>
+      <hr className="w-full h-[2px] bg-green-600" />
+    </nav>
+  );
+}
+
+return (
+  <>
+  {isLoggedIn ? auth() : unAuth()}
+  </>
+)
+
 };
 
 export default Nav;
