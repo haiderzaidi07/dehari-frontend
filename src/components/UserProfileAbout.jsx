@@ -1,39 +1,24 @@
 import React from "react";
-
-const UserProfileAbout = () => {
+const UserProfileAbout = ({ userProfile }) => {
     
   return (
     <div>
       <h1 class="text-green-600 font-bold text-xl">About</h1>
       <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione rerum
-        debitis distinctio expedita voluptates odit, aperiam et voluptatum
-        perferendis, soluta aut molestias sequi mollitia? Nulla deleniti,
-        repellat quo itaque in tempora corporis hic nesciunt voluptatem dolores
-        ab dolore. Dolorem, qui neque vel a quaerat architecto ad numquam
-        facilis voluptatum repellat!
+        About
+        {/* {userProfile.about} */}
       </p>
       <h1 class="text-green-600 font-bold text-xl">Skills</h1>
       <ul>
-        <li>PhotoShop</li>
-        <li>Illustrator</li>
-        <li>SQL</li>
-        <li>Database</li>
+      {userProfile.skills.map((skill, index) => (
+          <li key={index}>{skill}</li>
+        ))}
       </ul>
       <h1 class="text-green-600 font-bold text-xl">Certifications</h1>
       <ul>
-        <li>
-          PhotoShop - Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Autem, dolore.
-        </li>
-        <li>
-          Illustrator - Lorem ipsum, dolor sit amet consectetur adipisicing
-          elit. In, sequi!
-        </li>
-        <li>
-          SQL - Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          Explicabo, optio!
-        </li>
+      {userProfile.certification.map((cert, index) => (
+          <li key={index}>{cert}</li>
+        ))}
       </ul>
 
       <a

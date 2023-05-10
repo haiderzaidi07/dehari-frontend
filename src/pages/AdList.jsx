@@ -4,6 +4,7 @@ import Ads from '../components/Ads'
 import axios from 'axios'
 const AdList = (e) => {
   const [ads, setAds] = useState([]);
+  const [ad, setAd] = useState({});
   
   useEffect(() => {
     axios.get('http://localhost:4500/ad/list')
@@ -17,8 +18,9 @@ const AdList = (e) => {
   }, []);
   
     const [fullAdPopUpBtn, setFullAdPopUpBtn] = useState(false)
-    const handleFullAdPopUp = (value) => {
-      setFullAdPopUpBtn(value);
+    const handleFullAdPopUp = (value, value2) => {
+      setFullAdPopUpBtn(value, value2);
+      setAd(value2);
     }
   
 
@@ -46,13 +48,13 @@ const AdList = (e) => {
         </div>
 
         {/* <!-- Ad  --> */}
-        <Ads handleFullAdPopUp={handleFullAdPopUp} ads={ads}/>
+        <Ads handleFullAdPopUp={handleFullAdPopUp}  ads={ads}/>
       </div>
     </section>
 
     
 
-    <FullAdPopUp trigger={fullAdPopUpBtn} setTrigger={setFullAdPopUpBtn} />
+    <FullAdPopUp trigger={fullAdPopUpBtn} ad = {ad} setTrigger={setFullAdPopUpBtn} />
         
 
 

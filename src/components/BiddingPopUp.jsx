@@ -1,9 +1,11 @@
 import React,{useState} from 'react'
 import ConfirmationPopUp from './ConfirmationPopUp'
 
-const BiddingPopUp = ({trigger, setTrigger,setPrevTrig}) => {
+const BiddingPopUp = ({trigger, setTrigger,setPrevTrig, ad}) => {
 
   const [confirmationPopUpBtn, setConfirmationPopUpBtn] = useState(false)
+  const [bid, setBid] = useState(0);
+  const [description, setDescription] = useState("");
   const [hidePrev, setHidePrev] = useState(true)
   return trigger &&hidePrev ? (
     <>
@@ -13,15 +15,15 @@ const BiddingPopUp = ({trigger, setTrigger,setPrevTrig}) => {
             <form action="">
 
                 <h2 class="font-bold text-xl">Bid description:</h2>
-                <textarea class="p-2 my-4 w-full bg-slate-100 text-slate-600 text-md" name="" id="" cols="30" rows="10"></textarea>
+                <textarea class="p-2 my-4 w-full bg-slate-100 text-slate-600 text-md" name="" id="" cols="30" rows="10" onChange={(e) => setDescription(e.target.value)}></textarea>
                 <h2 class="font-bold">Attach any relevant work</h2>
                 <input type="file" name="" id="" class="block file:bg-white file:rounded-xl file:px-2 file:py-1 file:text-emerald-400 mb-10 mt-2 file:text-sm file:border-[2px] file:border-emerald-400"></input>
                 <span>Your bid</span>
-                <input type="text" class="font-semibold border-2 border-emerald-400 block py-2 px-4 my-2 text-sm rounded-sm" placeholder="Input your price"></input>
+                <input type="number" class="font-semibold border-2 border-emerald-400 block py-2 px-4 my-2 text-sm rounded-sm" placeholder="Input your price" onChange={(e) => setBid(e.target.value)}></input>
                 <input onClick={()=>{setConfirmationPopUpBtn(true)}} type="button" value="Bid" class="hover:-translate-y-1 transition-transform active:translate-y-1 block mx-auto bg-emerald-400 text-white py-2 px-4 rounded-full w-32 mt-10"></input>
             </form>
         </div>
-        <ConfirmationPopUp trigger={confirmationPopUpBtn}  setTrigger={setConfirmationPopUpBtn} setPrevTrig={setHidePrev} />
+        <ConfirmationPopUp trigger={confirmationPopUpBtn} ad = {ad} bid={bid} description={description} setTrigger={setConfirmationPopUpBtn} setPrevTrig={setHidePrev} />
     </>
   ):""
 }

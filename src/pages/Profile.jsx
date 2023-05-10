@@ -1,10 +1,36 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import UserProfileAbout from '../components/UserProfileAbout';
 import UserBids from '../components/UserBids';
 import UserOrders from '../components/UserOrders';
 import OfferUserGot from '../components/OfferUserGot';
 import UserAds from '../components/UserAds';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 const Profile=()=>{
+  const location = useLocation()
+  // console.log(location)
+  const userid = location.pathname.split("/")[3];
+  // console.log(userid)
+  const [userProfile, setUserProfile] = useState({
+    fullname : "",  
+    skills : [],
+    certification : [], 
+  });
+  const [placedBids, setPlacedBids] = useState([])
+  const [userAds, setUserAds] = useState([])
+  const [offersIGot, setOffersIGot] = useState([])
+  useEffect(() => {
+      
+        axios.get(`http://localhost:4500/users/profile/${userid}`).then(userProfile =>{
+        setUserProfile(userProfile.data.userProfile)
+        setPlacedBids(userProfile.data.placedBids.rows)
+        setUserAds(userProfile.data.userAds.rows)
+        setOffersIGot(userProfile.data.offersIGot.rows)
+      }).catch(error => {
+        console.log(error)
+        console.log("error occured")
+      })
+  }, [userid]);
 
   const [profileBtn,setProfileBtn]=useState(true);
   const [bidsBtn,setBidsBtn]=useState(false);
@@ -60,12 +86,11 @@ const Profile=()=>{
 
 return (
     <>
-      
         <img class="absolute top-0 h-80 -z-10 scale-x-150 w-full"  src="img/gradient.svg" alt="gradient"></img>
         <div class="mt-52 mb-20 bg-white rounded-xl shadow-lg p-10 w-2/3 mx-auto">
     
             <img class="mx-auto w-32 h-32 -mt-24" src="img/profilePicPlaceholder.jpeg" alt="profilePicPlaceholder"></img>
-            <span class="m-2 font-bold text-2xl text-green-600 text-center block">Haider Zaidi</span>
+            <span class="m-2 font-bold text-2xl text-green-600 text-center block">{userProfile.fullname}</span>
             <h1 class="text-center">ratings...(to be made)</h1>
             <button name="buying" onclick="switchProfile(this)" class="font-bold text-green-600 hover:text-green-700 block mx-auto">Switch to Selling</button>
     
@@ -80,12 +105,12 @@ return (
             <hr class="bg-green-600 w-full h-[3px] my-2"></hr>
             {/* <!-- about profile  --> */}
             <section class="mt-10 profileInfo">
-            {profileBtn&& <UserProfileAbout/>}
+            {profileBtn&& <UserProfileAbout userProfile={userProfile}/>}
               </section>
               {/* <!-- seller bids section  --> */}
             <section class=" bidsSection">
              
-            {bidsBtn&& <UserBids/>}
+            {bidsBtn&& <UserBids placedBids={placedBids}/>}
             </section>
             {/* <!-- current orders section  --> */}
             <section class=" currentOrdersSection">
@@ -94,11 +119,11 @@ return (
     
             {/* <!-- Offers i got section --> */}
             <section  class="offersIGotSection">
-             {offersBtn&&<OfferUserGot/>}
+             {offersBtn&&<OfferUserGot offersIGot={offersIGot}/>}
             </section>
             {/* <!-- My ads section  --> */}
             <section class=" myAdsSection">
-              {myAdsBtn&& <UserAds/>}
+              {myAdsBtn&& <UserAds userAds={userAds}/>}
             </section>
         </div>
         </>

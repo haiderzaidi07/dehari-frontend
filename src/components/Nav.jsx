@@ -10,9 +10,10 @@ const Nav = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [username, setUsername] = useState("")
-    
+    const [userid, setUserId] = useState("")
     const getUser = () => {
         setUsername(cookies.get("token").username)
+        setUserId(cookies.get("token").id)
     }
     
 
@@ -63,6 +64,9 @@ const Nav = () => {
                 Contact Us
               </li>
             </Link>
+              <li className="mx-4 my-2 transition-colors hover:text-emerald-500 text-gray-500">
+                {username}
+              </li>
           </ul>
 
           <div className="flex justify-between mx-2 items-center">
@@ -75,7 +79,7 @@ const Nav = () => {
               </button>
               {isOpen && (
                 <ul className="absolute right-0 top-7 bg-white text-black py-2 mt-2 w-48 rounded shadow">
-                  <Link to="/users/profile">
+                  <Link to={`/users/profile/${userid}`}>
                     <li  onClick={toggleDropdown} className="px-4 py-2 hover:bg-gray-200 cursor-pointer transition-color duration-300 hover:text-emerald-500">
                       Profile
                     </li>

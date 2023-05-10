@@ -38,8 +38,9 @@ function App() {
         <Route path='/users/profileSetup' element={<ProfileSetup />} />
         <Route path='/ad/list' element={<AdList />} />
         <Route path='/ad/post' element={<PostAd/>} />
-        <Route path='/users/profile' element={<Profile/>} />
+        <Route path='/users/profile/:id' element={<Profile/>} />
         <Route path='/users/editProfile' element={<EditProfile/>} />
+
       </Routes>
     </div>
   );
