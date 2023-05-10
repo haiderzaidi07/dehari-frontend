@@ -1,10 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import FullAdPopUp from '../components/FullAdPopUp'
-
-const AdList = () => {
+import Ads from '../components/Ads'
+import axios from 'axios'
+const AdList = (e) => {
+  const [ads, setAds] = useState([]);
+  
+  useEffect(() => {
+    axios.get('http://localhost:4500/ad/list')
+      .then(rows => { // add this line to log the data to console
+        setAds(rows.data) 
+      })
+      .catch(error => {
+        console.log(error)
+        console.log("error occured")
+      });
+  }, []);
   
     const [fullAdPopUpBtn, setFullAdPopUpBtn] = useState(false)
-
+    const handleFullAdPopUp = (value) => {
+      setFullAdPopUpBtn(value);
+    }
   
 
     return (
@@ -31,18 +46,7 @@ const AdList = () => {
         </div>
 
         {/* <!-- Ad  --> */}
-        <div onClick={ () => {setFullAdPopUpBtn(true)}} id="ad" class="ad bg-white border-[1px] border-slate-300 text-emerald-400 p-6 active:translate-y-2 hover:scale-105 transition-all duration-500" >
-          <h2 class="text-xl font-semibold my-2">Graphic Designer</h2>
-          <p class="text-slate-600 w-2/3 mb-10">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non
-            deleniti accusamus fugiat explicabo molestiae laborum, eaque
-            excepturi quos adipisci, officiis quaerat, minus laboriosam ipsam
-            quidem sequi recusandae! Quos, explicabo eum!
-          </p>
-          <span class="font-semibold my-10">Price estimate: 25$</span>
-
-         
-        </div>
+        <Ads handleFullAdPopUp={handleFullAdPopUp} ads={ads}/>
       </div>
     </section>
 

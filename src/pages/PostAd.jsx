@@ -69,7 +69,10 @@ const PostAd = () => {
             <span className="text-emerald-500 font-bold">Rupees</span>
           </div>
         </form>
-          {/* <button onClick={()=>{setPostAdBtn(true)}} className="mx-auto block bg-emerald-400 rounded-full py-2 px-8 font-bold text-white mt-10 hover:-translate-y-1 transition-transform active:translate-y-1">
+          {/* <button onClick={() => {
+    setPostAdBtn(true);
+    postAd();
+}} className="mx-auto block bg-emerald-400 rounded-full py-2 px-8 font-bold text-white mt-10 hover:-translate-y-1 transition-transform active:translate-y-1">
             Post Ad
           </button> */}
           {/* fix this part */}
