@@ -19,6 +19,7 @@ const Profile=()=>{
   const [placedBids, setPlacedBids] = useState([])
   const [userAds, setUserAds] = useState([])
   const [offersIGot, setOffersIGot] = useState([])
+  const [currentOrders, setCurrentOrders] = useState([])
   useEffect(() => {
       
         axios.get(`http://localhost:4500/users/profile/${userid}`).then(userProfile =>{
@@ -26,12 +27,14 @@ const Profile=()=>{
         setPlacedBids(userProfile.data.placedBids.rows)
         setUserAds(userProfile.data.userAds.rows)
         setOffersIGot(userProfile.data.offersIGot.rows)
+        setCurrentOrders(userProfile.data.currentOrders.rows)
+        
       }).catch(error => {
         console.log(error)
         console.log("error occured")
       })
   }, [userid]);
-
+console.log(offersIGot)
   const [profileBtn,setProfileBtn]=useState(true);
   const [bidsBtn,setBidsBtn]=useState(false);
   const [currOrdersBtn,setCurrOrdersBtn]=useState(false);
@@ -114,12 +117,14 @@ return (
             </section>
             {/* <!-- current orders section  --> */}
             <section class=" currentOrdersSection">
-              {currOrdersBtn&&<UserOrders/>}
+              {currOrdersBtn&&<UserOrders currentOrders={currentOrders}/>}
             </section>
     
             {/* <!-- Offers i got section --> */}
             <section  class="offersIGotSection">
              {offersBtn&&<OfferUserGot offersIGot={offersIGot}/>}
+             {/* {offersBtn&&<OfferUserGot/>} */}
+
             </section>
             {/* <!-- My ads section  --> */}
             <section class=" myAdsSection">
