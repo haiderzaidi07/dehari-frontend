@@ -14,6 +14,9 @@ import EditProfile from './pages/EditProfile';
 // import Header from './Navbar/Header';
 import Nav from './components/Nav';
 
+import About from './pages/About'
+import Contact from './pages/Contact'
+
 
 
 
@@ -32,6 +35,8 @@ function App() {
       <Nav/>
       <Routes>
         <Route path='/' element={<Landing />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/contactUs' element={<Contact />} />
         <Route path='/users/login' element={  <Login />} />
         <Route path='/users/register' element={<Register />} />
         <Route path='/users/logout' element={<Landing />} />

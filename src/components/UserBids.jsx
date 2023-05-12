@@ -36,8 +36,7 @@ const UserBids = () => {
                   <span class="font-bold text-green-600">Status:</span>
                   {/* <!-- add class bg-green-600 to the span tag you want to fill --> */}
                   <p><span class="border-[1px] border-green-600 rounded-full w-4 h-4 inline-block"> </span> Accepted</p>
-                  <p><span class="bg-green-600 border-[1px] border-green-600 rounded-full w-4 h-4 inline-block"> </span> Rejected</p>
-                  <p><span class="border-[1px] border-green-600 rounded-full w-4 h-4 inline-block"> </span> Interviewing</p>
+                  <p><span class="border-[1px] border-green-600 rounded-full w-4 h-4 inline-block"> </span> Pending</p>
                 </div>
               </div>
               

@@ -108,11 +108,6 @@ const unAuth = () => {
         </Link>
         <div className="flex">
           <ul className="flex">
-            <Link to="/homepage">
-              <li className="mx-4 my-2 transition-colors hover:text-emerald-500 text-gray-500">
-                Home
-              </li>
-            </Link>
             <Link to="/about">
               <li className="mx-4 my-2 transition-colors hover:text-emerald-500 text-gray-500">
                 About

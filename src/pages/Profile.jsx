@@ -95,7 +95,6 @@ return (
     
             <img class="mx-auto w-32 h-32 -mt-24" src="img/profilePicPlaceholder.jpeg" alt="profilePicPlaceholder"></img>
             <span class="m-2 font-bold text-2xl text-green-600 text-center block">{userProfile.fullname}</span>
-            <h1 class="text-center">ratings...(to be made)</h1>
             <button name="buying" onclick="switchProfile(this)" class="font-bold text-green-600 hover:text-green-700 block mx-auto">Switch to Selling</button>
     
             <div class="flex justify-left mt-10">
@@ -123,7 +122,7 @@ return (
     
             {/* <!-- Offers i got section --> */}
             <section  class="offersIGotSection">
-             {offersBtn&&<OfferUserGot offersIGot={offersIGot}/>}
+             {offersBtn&&<OfferUserGot/>}
              {/* {offersBtn&&<OfferUserGot/>} */}
 
             </section>

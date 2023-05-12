@@ -1,7 +1,22 @@
-import React from 'react'
+import React, {useState, useEffect}from 'react'
 import axios from 'axios';
+import { useLocation } from 'react-router-dom'
 
-const OfferUserGot = ({offersIGot}) => {
+const OfferUserGot = () => {
+  const location = useLocation()
+  const [offersIGot, setOffersIGot] = useState([])
+  const userid = location.pathname.split('/')[3]
+  useEffect(() => {
+
+   
+    axios.get(`http://localhost:4500/profileSetup/offersigot/${userid}`, {
+      withCredentials:true
+    }).then(offersIGot => {
+      console.log(offersIGot.data.offersIGot)
+      setOffersIGot(offersIGot.data.offersIGot)
+    })
+
+}, [])
   const acceptButtonClick = (bidid, adid) => {
     // Make the POST request to your backend
     axios.post('http://localhost:4500/bid/acceptbid', {
