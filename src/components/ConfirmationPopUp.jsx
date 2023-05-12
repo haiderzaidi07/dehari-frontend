@@ -26,6 +26,8 @@ const ConfirmationPopUp = ({trigger,setTrigger,prevTrigger, ad, bid, description
       fullname: fullname,
       skills: skills,
       certification: certification
+  }, {
+    withCredentials: true
   }).then(res => console.log(res)).catch(error => console.log(error)) 
   }
 
@@ -37,6 +39,8 @@ const ConfirmationPopUp = ({trigger,setTrigger,prevTrigger, ad, bid, description
       bid: bid,
       description: description,
       userid: user_id
+    }, {
+      withCredentials: true
     })
       .then(res => { // add this line to log the data to console
         console.log(res);
@@ -50,9 +54,11 @@ const ConfirmationPopUp = ({trigger,setTrigger,prevTrigger, ad, bid, description
 
   const performAction = () => {
     if (prevTrigger === true) {
+      console.log("make edit called")
       makeEdit(fullname, skills, certification)
       setCongratulationsPopUpBtn(true)
     } else {
+      console.log("make bid called")
       makebid(ad.id, bid, description)
       setCongratulationsPopUpBtn(true)
     }

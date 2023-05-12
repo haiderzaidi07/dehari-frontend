@@ -7,10 +7,12 @@ const OfferUserGot = ({offersIGot}) => {
     axios.post('http://localhost:4500/bid/acceptbid', {
       bidid: bidid,
       adid: adid
+    }, {
+      withCredentials: true
     })
       .then(response => {
         // Handle the response if needed
-        console.log(response);
+       console.log(response)
       })
       .catch(error => {
         // Handle the error if the request fails

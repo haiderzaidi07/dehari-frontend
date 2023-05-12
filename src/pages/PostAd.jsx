@@ -19,6 +19,8 @@ const PostAd = () => {
       e.preventDefault()
       await axios.post('http://localhost:4500/ad/post', {
         title, description, price, userid
+      }, {
+        withCredentials: true
       })
       .then (() => {
         window.location.href = '/homepage';

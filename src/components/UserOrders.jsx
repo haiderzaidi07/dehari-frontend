@@ -1,12 +1,33 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import axios from 'axios'
+import { useLocation } from 'react-router-dom'
 
-const UserOrders = ({currentOrders}) => {
+const UserOrders = () => {
+
+  const [currentOrders, setCurrentOrders] = useState([
+    {
+
+    }
+  ])
+  const location = useLocation()
+  const userid = location.pathname.split('/')[3]
+
+  useEffect(() => {
+
+    axios.get(`http://localhost:4500/profileSetup/currentorders/${userid}`, {
+      withCredentials:true
+    }).then(currentOrder => {
+      console.log(currentOrder.data.currentOrders)
+      setCurrentOrders(currentOrder.data.currentOrders)
+    })
+  }, [userid])
+
   return (
     <>
     {
       currentOrders.map(order=> (
     <div>
-      <div class="my-2 text-sm transition-transform hover:-translate-y-2 duration-500 flex justify-between border-2 border-green-600 p-4 bg-gray-50 shadow-lg">
+      <div class="my-2 text-sm transition-transform hover:-translate-y-2 duration-500 flex justify-between border-2 border-green-600 p-4 bg-gray-50 shadow-lg" key={order.id}>
                 <div class="w-3/5">
      
                 <h1 class="font-bold text-green-600 text-lg">{order.adtitle}</h1>
@@ -26,7 +47,8 @@ const UserOrders = ({currentOrders}) => {
                  </div>
                </div>
     </div>
-    ))}
+    ))
+    }
     </>
   )
 }

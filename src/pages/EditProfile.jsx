@@ -14,7 +14,9 @@ const EditProfile = () => {
 
   useEffect( () => {
     const userid = cookies.get('token').id
-    axios.get(`http://localhost:5000/users/profile/${userid}`).then((res) => {
+    axios.get(`http://localhost:4500/users/profile/${userid}`, {
+      withCredentials: true,
+    }).then((res) => {
       setFullName(res.data.userProfile.fullname)
       setSkills(res.data.userProfile.skills)
       setCertification(res.data.userProfile.certification)

@@ -17,6 +17,7 @@ import Nav from './components/Nav';
 
 
 
+
 function App() {
   
   /** Protected Routes
@@ -40,7 +41,7 @@ function App() {
         <Route path='/ad/post' element={<PostAd/>} />
         <Route path='/users/profile/:id' element={<Profile/>} />
         <Route path='/users/editProfile' element={<EditProfile/>} />
-
+ 
       </Routes>
     </div>
   );

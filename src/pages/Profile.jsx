@@ -16,19 +16,20 @@ const Profile=()=>{
     skills : [],
     certification : [], 
   });
-  const [placedBids, setPlacedBids] = useState([])
+  
   const [userAds, setUserAds] = useState([])
   const [offersIGot, setOffersIGot] = useState([])
   const [currentOrders, setCurrentOrders] = useState([])
   useEffect(() => {
       
-        axios.get(`http://localhost:4500/users/profile/${userid}`).then(userProfile =>{
+        axios.get(`http://localhost:4500/profileSetup/profile/${userid}`, {
+          withCredentials:true  
+        }).then(userProfile =>{
         setUserProfile(userProfile.data.userProfile)
-        setPlacedBids(userProfile.data.placedBids.rows)
-        setUserAds(userProfile.data.userAds.rows)
-        setOffersIGot(userProfile.data.offersIGot.rows)
-        setCurrentOrders(userProfile.data.currentOrders.rows)
-        
+        // setPlacedBids(userProfile.data.placedBids.rows)
+        // setUserAds(userProfile.data.userAds.rows)
+        // setOffersIGot(userProfile.data.offersIGot.rows)
+        // setCurrentOrders(userProfile.data.currentOrders.rows)
       }).catch(error => {
         console.log(error)
         console.log("error occured")
@@ -113,11 +114,11 @@ return (
               {/* <!-- seller bids section  --> */}
             <section class=" bidsSection">
              
-            {bidsBtn&& <UserBids placedBids={placedBids}/>}
+            {bidsBtn&& <UserBids/>}
             </section>
             {/* <!-- current orders section  --> */}
             <section class=" currentOrdersSection">
-              {currOrdersBtn&&<UserOrders currentOrders={currentOrders}/>}
+              {currOrdersBtn&&<UserOrders />}
             </section>
     
             {/* <!-- Offers i got section --> */}
@@ -128,7 +129,7 @@ return (
             </section>
             {/* <!-- My ads section  --> */}
             <section class=" myAdsSection">
-              {myAdsBtn&& <UserAds userAds={userAds}/>}
+              {myAdsBtn&& <UserAds />}
             </section>
         </div>
         </>

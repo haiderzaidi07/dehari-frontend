@@ -23,7 +23,7 @@ const BiddingPopUp = ({trigger, setTrigger,setPrevTrig, ad}) => {
                 <input onClick={()=>{setConfirmationPopUpBtn(true)}} type="button" value="Bid" class="hover:-translate-y-1 transition-transform active:translate-y-1 block mx-auto bg-emerald-400 text-white py-2 px-4 rounded-full w-32 mt-10"></input>
             </form>
         </div>
-        <ConfirmationPopUp trigger={confirmationPopUpBtn} ad = {ad} bid={bid} description={description} setTrigger={setConfirmationPopUpBtn} setPrevTrig={setHidePrev} />
+        <ConfirmationPopUp trigger={confirmationPopUpBtn} ad = {ad} bid={bid} description={description} setTrigger={setConfirmationPopUpBtn} setPrevTrig={false} />
     </>
   ):""
 }

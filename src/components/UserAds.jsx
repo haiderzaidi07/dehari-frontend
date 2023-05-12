@@ -1,6 +1,25 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import axios from 'axios'
+import { useLocation } from 'react-router-dom'
 
-const UserAds = ({userAds}) => {
+const UserAds = () => {
+  const location = useLocation()
+  const [userAds, setUserAds] = useState([])
+  const userid = location.pathname.split('/')[3]
+  
+  useEffect(() => {
+
+   
+    axios.get(`http://localhost:4500/profileSetup/getads/${userid}`, {
+      withCredentials:true
+    }).then(userAds => {
+      console.log(userAds.data.userAds)
+      setUserAds(userAds.data.userAds)
+    })
+
+}, [])
+
+
   return (
     <>
     {
