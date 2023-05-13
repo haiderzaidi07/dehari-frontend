@@ -22,7 +22,7 @@ const Profile=()=>{
   // const [currentOrders, setCurrentOrders] = useState([])
   useEffect(() => {
       
-        axios.get(`http://localhost:4500/profileSetup/profile/${userid}`, {
+        axios.get(`https://dehari.cyclic.app/profileSetup/profile/${userid}`, {
           withCredentials:true  
         }).then(userProfile =>{
         setUserProfile(userProfile.data.userProfile)
