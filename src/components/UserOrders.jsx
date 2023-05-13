@@ -14,7 +14,7 @@ const UserOrders = () => {
 
   useEffect(() => {
 
-    axios.get(`http://localhost:4500/profileSetup/currentorders/${userid}`, {
+    axios.get(`https://dehari.cyclic.app/profileSetup/currentorders/${userid}`, {
       withCredentials:true
     }).then(currentOrder => {
       console.log(currentOrder.data.currentOrders)

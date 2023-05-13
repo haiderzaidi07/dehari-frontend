@@ -21,7 +21,7 @@ const ConfirmationPopUp = ({trigger,setTrigger,prevTrigger, ad, bid, description
 
   const makeEdit = () => {
     const userid = cookies.get('token').id
-    axios.put(`http://localhost:4500/profileSetup/editprofile`, {
+    axios.put(`https://dehari.cyclic.app/profileSetup/editprofile`, {
       userid: userid,
       fullname: fullname,
       skills: skills,
@@ -34,7 +34,7 @@ const ConfirmationPopUp = ({trigger,setTrigger,prevTrigger, ad, bid, description
   const makebid = (ad_id, bid, description) => {
     const user_id = cookies.get("token").id;
     console.log(ad_id, parseInt(bid, 10), description, user_id)
-    axios.post('http://localhost:4500/bid/makebid', {
+    axios.post('https://dehari.cyclic.app/bid/makebid', {
       ad_id: ad_id,
       bid: bid,
       description: description,

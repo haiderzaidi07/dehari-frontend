@@ -10,7 +10,7 @@ const UserAds = () => {
   useEffect(() => {
 
    
-    axios.get(`http://localhost:4500/profileSetup/getads/${userid}`, {
+    axios.get(`https://dehari.cyclic.app/profileSetup/getads/${userid}`, {
       withCredentials:true
     }).then(userAds => {
       console.log(userAds.data.userAds)

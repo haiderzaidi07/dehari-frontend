@@ -9,7 +9,7 @@ const UserBids = () => {
 
   useEffect(() => {
 
-    axios.get(`http://localhost:4500/profileSetup/placedbids/${userid}`, {
+    axios.get(`https://dehari.cyclic.app/profileSetup/placedbids/${userid}`, {
       withCredentials:true
     }).then(placedBids => {
       console.log(placedBids.data)

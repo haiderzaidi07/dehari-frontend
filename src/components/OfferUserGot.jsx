@@ -9,7 +9,7 @@ const OfferUserGot = () => {
   useEffect(() => {
 
    
-    axios.get(`http://localhost:4500/profileSetup/offersigot/${userid}`, {
+    axios.get(`https://dehari.cyclic.app/profileSetup/offersigot/${userid}`, {
       withCredentials:true
     }).then(offersIGot => {
       console.log(offersIGot.data.offersIGot)
@@ -19,7 +19,7 @@ const OfferUserGot = () => {
 }, [])
   const acceptButtonClick = (bidid, adid) => {
     // Make the POST request to your backend
-    axios.post('http://localhost:4500/bid/acceptbid', {
+    axios.post('https://dehari.cyclic.app/bid/acceptbid', {
       bidid: bidid,
       adid: adid
     }, {
@@ -37,7 +37,7 @@ const OfferUserGot = () => {
 
   const rejectButtonClick = (bidid, adid) => {
     // Make the POST request to your backend
-    axios.post('http://localhost:4500/bid/rejectbid', {
+    axios.post('https://dehari.cyclic.app/bid/rejectbid', {
       bidid: bidid,
       adid: adid
     })

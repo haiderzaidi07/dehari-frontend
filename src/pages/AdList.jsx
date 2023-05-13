@@ -7,7 +7,7 @@ const AdList = (e) => {
   const [ad, setAd] = useState({});
   
   useEffect(() => {
-    axios.get('http://localhost:4500/ad/list', {
+    axios.get('https://dehari.cyclic.app/ad/list', {
       withCredentials: true,
     })
       .then(rows => { // add this line to log the data to console

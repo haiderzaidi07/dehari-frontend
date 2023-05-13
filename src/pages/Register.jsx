@@ -13,7 +13,7 @@ const Register = () => {
 
   const postRegister = async (e) => {
     e.preventDefault()
-    await  axios.post('http://localhost:4500/users/register', {
+    await  axios.post('https://dehari.cyclic.app/users/register', {
       username,
       email,
       password,

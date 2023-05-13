@@ -14,7 +14,7 @@ const EditProfile = () => {
 
   useEffect( () => {
     const userid = cookies.get('token').id
-    axios.get(`http://localhost:4500/users/profile/${userid}`, {
+    axios.get(`https://dehari.cyclic.app/users/profile/${userid}`, {
       withCredentials: true,
     }).then((res) => {
       setFullName(res.data.userProfile.fullname)

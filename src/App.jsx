@@ -2,31 +2,20 @@ import { Route, Routes } from 'react-router-dom'
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Register from './pages/Register';
-import Homepage from './pages/homepage';
-// import { useEffect } from 'react';
-// import axios from 'axios';
+import Homepage from './pages/Homepage';
 import ProfileSetup from './pages/ProfileSetup';
 import AdList from './pages/AdList';
 import Profile from './pages/Profile';
-// import Nav from './components/Nav';
 import PostAd from './pages/PostAd';
 import EditProfile from './pages/EditProfile';
-// import Header from './Navbar/Header';
 import Nav from './components/Nav';
-
 import About from './pages/About'
 import Contact from './pages/Contact'
-
-
-
-
 
 function App() {
   
   /** Protected Routes
    * All except Login Register, Landing
-   * 
-   * 
    */
 
   
