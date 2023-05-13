@@ -11,6 +11,7 @@ import EditProfile from './pages/EditProfile';
 import Nav from './components/Nav';
 import About from './pages/About'
 import Contact from './pages/Contact'
+import ProtectedRoutes from './auth/ProtectedRoutes'
 
 function App() {
   
@@ -28,13 +29,12 @@ function App() {
         <Route path='/contactUs' element={<Contact />} />
         <Route path='/users/login' element={  <Login />} />
         <Route path='/users/register' element={<Register />} />
-        <Route path='/users/logout' element={<Landing />} />
-        <Route path='/homepage' element={<Homepage /> } />
-        <Route path='/users/profileSetup' element={<ProfileSetup />} />
-        <Route path='/ad/list' element={<AdList />} />
-        <Route path='/ad/post' element={<PostAd/>} />
-        <Route path='/users/profile/:id' element={<Profile/>} />
-        <Route path='/users/editProfile' element={<EditProfile/>} />
+        <Route path='/homepage' element={<ProtectedRoutes><Homepage /></ProtectedRoutes>} />
+        <Route path='/users/profileSetup' element={<ProtectedRoutes><ProfileSetup /></ProtectedRoutes>} />
+        <Route path='/ad/list' element={<ProtectedRoutes><AdList /></ProtectedRoutes>} />
+        <Route path='/ad/post' element={<ProtectedRoutes><PostAd /></ProtectedRoutes>} />
+        <Route path='/users/profile/:id' element={<ProtectedRoutes><Profile /></ProtectedRoutes>} />
+        <Route path='/users/editProfile' element={<ProtectedRoutes><EditProfile /></ProtectedRoutes>} />
  
       </Routes>
     </div>

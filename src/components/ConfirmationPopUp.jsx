@@ -5,7 +5,7 @@ import Cookies from 'universal-cookie'
 
 const cookies = new Cookies()
 
-const ConfirmationPopUp = ({trigger,setTrigger,prevTrigger, ad, bid, description, fullname, skills, certification}) => {
+const ConfirmationPopUp = ({trigger,setTrigger,prevTrigger, ad, bid, description, fullname, skills, certification,message}) => {
   const [congratulationsPopUpBtn, setCongratulationsPopUpBtn] = useState(false)
   const [hidePrev, setHidePrev] = useState(true)
   
@@ -74,7 +74,7 @@ const ConfirmationPopUp = ({trigger,setTrigger,prevTrigger, ad, bid, description
         <button onClick={()=>performAction()} class="hover:-translate-y-1 transition-transform active:translate-y-1 py-2 px-4 font-bold rounded-full block m-4 w-1/2 mx-auto bg-emerald-400 text-white">Yes, confirm</button>
         <button onClick={()=>{setTrigger(false)}} class="hover:-translate-y-1 transition-transform active:translate-y-1 py-2 px-4 font-bold rounded-full block m-4 w-1/2 mx-auto bg-slate-200 text-slate-600">No, cancel it</button>
         </div>
-        <CongratulationsPopUp trigger={congratulationsPopUpBtn} setTrigger={setCongratulationsPopUpBtn} setPrevTrig={setHidePrev} />
+        <CongratulationsPopUp trigger={congratulationsPopUpBtn} setTrigger={setCongratulationsPopUpBtn} setPrevTrig={setHidePrev} message={message}/>
     </>
   ):""
 }

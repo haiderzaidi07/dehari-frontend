@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import FullAdPopUp from '../components/FullAdPopUp'
 import Ads from '../components/Ads'
 import axios from 'axios'
+import PreLoader from '../components/PreLoader'
 const AdList = (e) => {
   const [ads, setAds] = useState([]);
   const [ad, setAd] = useState({});
@@ -48,7 +49,9 @@ const AdList = (e) => {
             />
           </form>
         </div>
-
+        <div className="p-10">
+        <PreLoader time="2000"/>
+        </div>
         {/* <!-- Ad  --> */}
         <Ads handleFullAdPopUp={handleFullAdPopUp}  ads={ads}/>
       </div>

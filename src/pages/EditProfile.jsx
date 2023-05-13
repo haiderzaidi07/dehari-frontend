@@ -53,7 +53,7 @@ const EditProfile = () => {
         </section>
     </div>
     
-      <ConfirmationPopUp trigger={confirmationPopUp} setTrigger={setConfirmationPopUp} fullname={fullname} skills={skills} certification={certification} prevTrigger={true}></ConfirmationPopUp>    </>
+      <ConfirmationPopUp trigger={confirmationPopUp} setTrigger={setConfirmationPopUp} fullname={fullname} skills={skills} certification={certification} prevTrigger={true} message={'Profile edited Successfully!'}></ConfirmationPopUp>    </>
   );
 };
 
