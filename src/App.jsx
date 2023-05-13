@@ -10,6 +10,7 @@ import PostAd from './pages/PostAd';
 import EditProfile from './pages/EditProfile';
 import Nav from './components/Nav';
 import About from './pages/About'
+import NotFound from './pages/NotFound'
 import Contact from './pages/Contact'
 import ProtectedRoutes from './auth/ProtectedRoutes'
 
@@ -35,6 +36,7 @@ function App() {
         <Route path='/ad/post' element={<ProtectedRoutes><PostAd /></ProtectedRoutes>} />
         <Route path='/users/profile/:id' element={<ProtectedRoutes><Profile /></ProtectedRoutes>} />
         <Route path='/users/editProfile' element={<ProtectedRoutes><EditProfile /></ProtectedRoutes>} />
+        <Route path='*' element={<NotFound />} />
  
       </Routes>
     </div>

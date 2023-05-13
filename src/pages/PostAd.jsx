@@ -17,7 +17,7 @@ const PostAd = () => {
 
     const postAd = async (e) =>{
       e.preventDefault()
-      await axios.post('https://dehari.cyclic.app/ad/post', {
+      await axios.post('http://localhost:4500/ad/post', {
         title, description, price, userid
       }, {
         withCredentials: true

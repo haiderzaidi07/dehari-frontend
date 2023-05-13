@@ -1,10 +1,22 @@
-import React,{ useState } from 'react'
+import React,{ useState,useEffect } from 'react'
 import BiddingPopUp from './BiddingPopUp'
+import Cookies from 'universal-cookie'
 
+const cookies = new Cookies();
 
 const FullAdPopUp = ({trigger, setTrigger, ad}) => {
   const [bidPopUpBtn, setBidPopUpBtn] = useState(false)
   const [hidePrev, setHidePrev] = useState(true)
+  const userid = cookies.get("token").id
+  useEffect(()=>{
+    console.log("full ad pop called", ad.id)
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const interval=setTimeout(()=>{
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.body.classList.toggle('overflow-hidden')
+      clearTimeout(interval);
+    },500)
+  },[trigger,hidePrev])
   return trigger &&hidePrev ? (  
     <>
     <div className='bg-black absolute top-0 bg-opacity-50 z-10 w-full h-[1000px]'>
@@ -22,10 +34,9 @@ const FullAdPopUp = ({trigger, setTrigger, ad}) => {
             <img className="w-1/5 m-1 hover:scale-150 transition-all" src="img/img2.jpg" alt=""></img>
             <img className="w-1/5 m-1 hover:scale-150 transition-all" src="img/img3.jpg" alt=""></img>
         </div>
-        <button onClick={()=>{setBidPopUpBtn(true)}} className="mx-auto block bg-emerald-400 rounded-full py-2 px-4 text-white mt-10 hover:-translate-y-1 transition-transform active:translate-y-1">Make bid</button>
+        {(ad.userid !== userid) ? <button onClick={()=>{setBidPopUpBtn(true)}} className="mx-auto block bg-emerald-400 rounded-full py-2 px-4 text-white mt-10 hover:-translate-y-1 transition-transform active:translate-y-1">Make bid</button> : "" }
     </div>  
-
-    <BiddingPopUp trigger={bidPopUpBtn} setTrigger={setBidPopUpBtn} ad = {ad} hidePrevTrigger={hidePrev} setPrevTrig={setHidePrev}  />
+       <BiddingPopUp trigger={bidPopUpBtn} setTrigger={setBidPopUpBtn} ad = {ad} hidePrevTrigger={hidePrev} setPrevTrig={setHidePrev}  /> 
     </>
   ) : ""
 

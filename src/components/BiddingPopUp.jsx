@@ -2,10 +2,11 @@ import React,{useState} from 'react'
 import ConfirmationPopUp from './ConfirmationPopUp'
 
 const BiddingPopUp = ({trigger, setTrigger,setPrevTrig, ad}) => {
-
+  
   const [confirmationPopUpBtn, setConfirmationPopUpBtn] = useState(false)
   const [bid, setBid] = useState(0);
   const [description, setDescription] = useState("");
+  const [title, setTitle] = useState("")
   // const [hidePrev, setHidePrev] = useState(true)
   const hidePrev = true
   
@@ -16,6 +17,8 @@ const BiddingPopUp = ({trigger, setTrigger,setPrevTrig, ad}) => {
             
             <form action="">
 
+                <h2 class="font-bold text-xl">Bid Title:</h2>
+                <input class="p-2 my-4 w-full bg-slate-100 text-slate-600 text-md" onChange={(e) => setTitle(e.target.value)}></input>
                 <h2 class="font-bold text-xl">Bid description:</h2>
                 <textarea class="p-2 my-4 w-full bg-slate-100 text-slate-600 text-md" name="" id="" cols="30" rows="10" onChange={(e) => setDescription(e.target.value)}></textarea>
                 <h2 class="font-bold">Attach any relevant work</h2>
@@ -25,7 +28,7 @@ const BiddingPopUp = ({trigger, setTrigger,setPrevTrig, ad}) => {
                 <input onClick={()=>{setConfirmationPopUpBtn(true)}} type="button" value="Bid" class="hover:-translate-y-1 transition-transform active:translate-y-1 block mx-auto bg-emerald-400 text-white py-2 px-4 rounded-full w-32 mt-10"></input>
             </form>
         </div>
-        <ConfirmationPopUp trigger={confirmationPopUpBtn} ad = {ad} bid={bid} description={description} setTrigger={setConfirmationPopUpBtn} setPrevTrig={false} message={'Bid posted Successfully!'} />
+        <ConfirmationPopUp trigger={confirmationPopUpBtn} ad = {ad} bid={bid} description={description} title={title} setTrigger={setConfirmationPopUpBtn} setPrevTrig={false} message={'Bid posted Successfully!'} />
     </>
   ):""
 }

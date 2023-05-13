@@ -9,6 +9,8 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
+  const [securityQuestion, setSecurityQuestion] = useState("");
+  const [securityAnswer, setSecurityAnswer] = useState("");
   const [error, setError] = useState(null);
 
   const postRegister = async (e) => {
@@ -27,12 +29,14 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        "https://dehari.cyclic.app/users/register",
+        "http://localhost:4500/users/register",
         {
           username,
           email,
           password,
           password2,
+          securityQuestion,
+          securityAnswer
         }
       );
 
@@ -51,7 +55,7 @@ const Register = () => {
   return (
     <div className="bg-gradient-to-r from-green-400 via-teal-500 to-blue-500">
       <div className="min-h-screen flex items-center justify-center">
-        <div className="bg-white p-8 rounded-lg shadow-lg">
+        <div className="bg-white w-1/2 p-8 my-10 rounded-lg shadow-lg">
           <h1 className="text-3xl font-bold mb-4 text-center">Register</h1>
           <form className="space-y-4">
             <div>
@@ -117,6 +121,22 @@ const Register = () => {
                 onChange={(e) => setPassword2(e.target.value)}
                 required
               ></input>
+            </div>
+            <div>
+              <label className="block font-semibold text-gray-700 mb-2" htmlFor="password">Security Question</label>
+              <select className="block w-full p-4 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-emerald-500" onChange={(e) => setSecurityQuestion(e.target.value)}>Security Question?
+              <option value="" class="text-gray-700" selected>--select a security question</option>
+              <option value="" class="text-gray-700"> What is your favorite color?</option>
+              <option value="" class="text-gray-700"> What is the city where you were born?</option>
+              <option value="" class="text-gray-700"> What is the name of your elementary school?</option>
+              <option value="" class="text-gray-700"> What is your favorite book?</option>
+              <option value="" class="text-gray-700"> What is your favorite movie?</option>
+              </select>
+
+              <input className="w-full border border-gray-300 p-2 mt-2 rounded-lg" 
+                type="text" id="question-inp" name="question-inp" required value={securityAnswer} onChange={e => setSecurityAnswer(e.target.value)}
+              ></input>
+              
             </div>
             {error && <div className="text-red-500 text-center">{error}</div>}
             <div>

@@ -43,7 +43,7 @@ const Nav = () => {
   const auth = () => {
   return (
     <nav>
-      <div className="flex justify-between items-center pr-5 pt-2">
+      <div className="flex justify-between bg-white items-center pr-5 pt-2">
         <Link to="/">
           <span className="text-green-600 mx-4 font-bold text-2xl">Dehari</span>
         </Link>

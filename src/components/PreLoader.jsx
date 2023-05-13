@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-const PreLoader = ({ time }) => {
+const PreLoader = ({ time ,setTrigger}) => {
   const [preload, setPreload] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setPreload(false);
+      setTrigger(false);
     }, time);
 
     return () => {

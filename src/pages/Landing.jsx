@@ -20,7 +20,7 @@ const Landing = () => {
     
         <section className="h-screen w-full flex flex-col items-center">
             <div className="text-6xl text-center text-emerald-400 mt-52">
-                <h1>Paise <span className="text-yellow-400"> شات? </span></h1>
+                <h1>Paise <span className="text-yellow-400"> شاٹ? </span></h1>
                 <h1>Dehari Lagao!</h1>
             </div>
             <Link to="/homepage">
