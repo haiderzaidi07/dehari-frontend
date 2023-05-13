@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import Landing from "./pages/Landing";
 import Login from "./pages/login";
 import Register from './pages/Register';
-import Homepage from './pages/Homepage';
+import Homepage from './pages/homepage';
 import ProfileSetup from './pages/ProfileSetup';
 import AdList from './pages/AdList';
 import Profile from './pages/Profile';
