@@ -17,12 +17,12 @@ const Profile=()=>{
     certification : [], 
   });
   
-  const [userAds, setUserAds] = useState([])
-  const [offersIGot, setOffersIGot] = useState([])
-  const [currentOrders, setCurrentOrders] = useState([])
+  // const [userAds, setUserAds] = useState([])
+  // const [offersIGot, setOffersIGot] = useState([])
+  // const [currentOrders, setCurrentOrders] = useState([])
   useEffect(() => {
       
-        axios.get(`https://dehari.cyclic.app/profileSetup/profile/${userid}`, {
+        axios.get(`http://localhost:4500/profileSetup/profile/${userid}`, {
           withCredentials:true  
         }).then(userProfile =>{
         setUserProfile(userProfile.data.userProfile)
@@ -35,7 +35,7 @@ const Profile=()=>{
         console.log("error occured")
       })
   }, [userid]);
-console.log(offersIGot)
+// console.log(offersIGot)
   const [profileBtn,setProfileBtn]=useState(true);
   const [bidsBtn,setBidsBtn]=useState(false);
   const [currOrdersBtn,setCurrOrdersBtn]=useState(false);

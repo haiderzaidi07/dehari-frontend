@@ -17,7 +17,7 @@ const UserAds = () => {
       setUserAds(userAds.data.userAds)
     })
 
-}, [])
+}, [userid])
 
 
   return (

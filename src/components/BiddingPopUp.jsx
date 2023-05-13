@@ -6,7 +6,9 @@ const BiddingPopUp = ({trigger, setTrigger,setPrevTrig, ad}) => {
   const [confirmationPopUpBtn, setConfirmationPopUpBtn] = useState(false)
   const [bid, setBid] = useState(0);
   const [description, setDescription] = useState("");
-  const [hidePrev, setHidePrev] = useState(true)
+  // const [hidePrev, setHidePrev] = useState(true)
+  const hidePrev = true
+  
   return trigger &&hidePrev ? (
     <>
         <div class="bg-white text-emerald-400 rounded-lg absolute z-20 p-6 top-14 w-1/2 left-1/2 -translate-x-1/2">

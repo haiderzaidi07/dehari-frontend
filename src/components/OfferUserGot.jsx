@@ -16,7 +16,8 @@ const OfferUserGot = () => {
       setOffersIGot(offersIGot.data.offersIGot)
     })
 
-}, [])
+}, [userid])
+
   const acceptButtonClick = (bidid, adid) => {
     // Make the POST request to your backend
     axios.post('https://dehari.cyclic.app/bid/acceptbid', {

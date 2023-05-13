@@ -2,8 +2,8 @@ import React,{useState} from 'react'
 
 const ProfileSetup = () => {
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [phone, setPhone] = useState('');
   const [company, setCompany] = useState('');
   const [position, setPosition] = useState('');
   const [duration, setDuration] = useState('');
@@ -16,8 +16,8 @@ const ProfileSetup = () => {
     // e.g., send the data to an API or update state in a parent component
     // Reset form fields if needed
     setName('');
-    setEmail('');
-    setPhone('');
+    // setEmail('');
+    // setPhone('');
     setCompany('');
     setPosition('');
     setDuration('');

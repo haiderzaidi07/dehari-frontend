@@ -1,9 +1,5 @@
-import { useState, useEffect } from 'react';
-
 const Ads = ({ handleFullAdPopUp, ads }) => {
-
   
-
   const handleClick = (ad) => {
     handleFullAdPopUp(true, ad);
   }

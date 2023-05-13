@@ -10,7 +10,7 @@ const EditProfile = () => {
   const [fullname, setFullName] = useState('')
   const [skills, setSkills] = useState([])
   const [certification, setCertification] = useState([])
-  const [prevTrigger, setPrevTrigger] = useState("")
+  // const [prevTrigger, setPrevTrigger] = useState("")
 
   useEffect( () => {
     const userid = cookies.get('token').id
@@ -20,7 +20,7 @@ const EditProfile = () => {
       setFullName(res.data.userProfile.fullname)
       setSkills(res.data.userProfile.skills)
       setCertification(res.data.userProfile.certification)
-      setPrevTrigger("editprofile")
+      // setPrevTrigger("editprofile")
     })
   }, [])
 
