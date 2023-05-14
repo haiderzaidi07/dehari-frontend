@@ -8,15 +8,14 @@ const cookies = new Cookies();
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [username, setUsername] = useState("")
     const [userid, setUserId] = useState("")
+
     const getUser = () => {
         setUsername(cookies.get("token").username)
         setUserId(cookies.get("token").id)
     }
-    
-
 
     const logout = () => {
         cookies.remove('token', { path: '/' });
