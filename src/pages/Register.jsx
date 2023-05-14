@@ -40,7 +40,7 @@ const Register = () => {
         }
       );
 
-      cookies.set("token", response.data.token, { path: "/" });
+      await cookies.set('token', response.data.token, { path: '/' })
       window.location.href = "/users/profileSetup";
     } catch (err) {
       if (err.response) {

@@ -1,6 +1,6 @@
 import React,{useState, useEffect } from 'react'
 import axios from 'axios';
-import Cookies from 'axios'
+import Cookies from 'universal-cookie'
 const cookies = new Cookies()
 
 const ProfileSetup = () => {
@@ -9,21 +9,36 @@ const ProfileSetup = () => {
   const [skills, setSkills] = useState("");
 
   const [certification, setCertification] = useState("");
-
+  const {id} = cookies.get('token')
   const postProfileSetup = async (e) => {
     e.preventDefault();
-    skills = `{${skills}}`
-    certification = `{${certification}}`
+     let skill = `{${skills}}`
+    let certifications = `{${certification}}`
+
+    if (fullname === "") {
+      var fullnametest = `guest${id}`;
+      setFullName(fullnametest);
+    } else {
+      fullnametest = fullname;
+    }
+
+
+
 
 try{
     await axios.post(
     "http://localhost:4500/profileSetup/profile",
     {
-      fullname,
-      skills, 
-      certification
+      fullname : fullnametest,
+      skills : skill, 
+      certification : certifications,
+      id
+    }, {
+      withCredentials: true,
     }
-  )
+  ).catch((err) => {
+    console.log(err)
+  });
   window.location.href = "/homepage"
 }catch(e){
   console.log(e);

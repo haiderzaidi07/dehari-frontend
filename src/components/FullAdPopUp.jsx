@@ -28,12 +28,7 @@ const FullAdPopUp = ({trigger, setTrigger, ad}) => {
         <p className="text-slate-600 w-5/6 py-8">{ad.description} </p>
         <p className="text-slate-600 w-5/6 py-8">{ad.price} </p>
 
-        <h3 className="font-semibold mt-10">Sample images</h3>
-        <div className="flex">
-            <img className="w-1/5 m-1 hover:scale-150 transition-all" src="img/img1.jpg" alt=""></img>
-            <img className="w-1/5 m-1 hover:scale-150 transition-all" src="img/img2.jpg" alt=""></img>
-            <img className="w-1/5 m-1 hover:scale-150 transition-all" src="img/img3.jpg" alt=""></img>
-        </div>
+        
         {(ad.userid !== userid) ? <button onClick={()=>{setBidPopUpBtn(true)}} className="mx-auto block bg-emerald-400 rounded-full py-2 px-4 text-white mt-10 hover:-translate-y-1 transition-transform active:translate-y-1">Make bid</button> : "" }
     </div>  
        <BiddingPopUp trigger={bidPopUpBtn} setTrigger={setBidPopUpBtn} ad = {ad} hidePrevTrigger={hidePrev} setPrevTrig={setHidePrev}  /> 

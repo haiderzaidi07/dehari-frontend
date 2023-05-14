@@ -31,7 +31,7 @@ function App() {
         <Route path='/users/login' element={  <Login />} />
         <Route path='/users/register' element={<Register />} />
         <Route path='/homepage' element={<ProtectedRoutes><Homepage /></ProtectedRoutes>} />
-        <Route path='/users/profileSetup' element={<ProtectedRoutes><ProfileSetup /></ProtectedRoutes>} />
+        <Route path='/users/profileSetup' element={<ProfileSetup />} />
         <Route path='/ad/list' element={<ProtectedRoutes><AdList /></ProtectedRoutes>} />
         <Route path='/ad/post' element={<ProtectedRoutes><PostAd /></ProtectedRoutes>} />
         <Route path='/users/profile/:id' element={<ProtectedRoutes><Profile /></ProtectedRoutes>} />

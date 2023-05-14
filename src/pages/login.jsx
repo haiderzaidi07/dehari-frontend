@@ -10,14 +10,20 @@ const Login = () => {
   const [error, setError] = useState(null)
   const [answer, setAnswer] = useState("")
   const [email, setEmail] = useState("")
+  const [newPassword, setNewPassword] = useState("")
+  
   
   const forgotPassword = async (e) => {
     e.preventDefault()
+    console.log(email, answer, newPassword)
     try {
-      const response = await axios.put(`http://localhost:4500/users/forgot-password`, {
+      const response = await axios.post(`http://localhost:4500/users/forgot-password`, {
         email, 
-        answer
+        answer,
+        newPassword
       })
+      console.log(response)
+      window.location.href = '/users/login';
     } catch (err) {
       console.error(err)
     } 
@@ -57,9 +63,12 @@ const Login = () => {
     })
     if(e.target.innerText === "I remember it"){
       e.target.innerText = "Forgot Password?"
+     
+      
     }
-    else
+    else{
     e.target.innerText="I remember it"
+    }
 
   }
 
@@ -106,7 +115,7 @@ const Login = () => {
             <div className="forgot-inp-hide hidden">
               <label className="block font-semibold text-gray-700 mb-2" htmlFor="new-password">new-password</label>
               <input className="w-full border border-gray-300 p-2 rounded-lg" 
-                type="new-password" id="new-password" 
+                type="new-password" id="new-password" value={newPassword} onChange={e => setNewPassword(e.target.value)} 
               ></input>
             </div>
             <div className="forgot-inp-hide hidden">
@@ -115,11 +124,14 @@ const Login = () => {
                 type="confirm-new-password" id="confirm-new-password" 
               ></input>
             </div>
-            <button onClick={(e)=>{handleForgotPassword(e)}} className="font-semibold text-slate-400 hover:text-slate-600">Forgot Password?</button>
+            <button onClick={(e)=>{handleForgotPassword(e)}} className="forgot-inp-hide hiddenfont-semibold text-slate-400 hover:text-slate-600">Forgot Password?</button>
             {error && <div className="text-red-500">{error}</div>}
-            <div>
-              <button className="hover:-translate-y-1 hover:text-emerald-500 w-full bg-gradient-to-r from-green-400 via-teal-500 to-blue-500 text-white py-2 rounded-lg hover:to-white hover:from-white hover:border-2 border-emerald-500 active:translate-y-1 transition-all duration-300 ease-in-out" onClick={postLogin}>Login</button>
-            </div>
+           
+              <button className="forgot-inp-hide hidden hover:-translate-y-1 hover:text-emerald-500 w-full bg-gradient-to-r from-green-400 via-teal-500 to-blue-500 text-white py-2 rounded-lg hover:to-white hover:from-white hover:border-2 border-emerald-500 active:translate-y-1 transition-all duration-300 ease-in-out" onClick={forgotPassword}>Change Password</button>
+          
+              <button className="forgot-inp-hide  hover:-translate-y-1 hover:text-emerald-500 w-full bg-gradient-to-r from-green-400 via-teal-500 to-blue-500 text-white py-2 rounded-lg hover:to-white hover:from-white hover:border-2 border-emerald-500 active:translate-y-1 transition-all duration-300 ease-in-out" onClick={postLogin}>Login</button>
+            
+            
           </form>
         </div>
       </div>

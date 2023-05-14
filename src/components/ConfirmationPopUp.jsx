@@ -55,6 +55,7 @@ const ConfirmationPopUp = ({trigger,setTrigger,prevTrigger, ad, bid, description
       .then(res => { // add this line to log the data to console
         console.log(res);
         setCongratulationsPopUpBtn(true)
+        window.location.href = `/ad/list`;
       })
       .catch(error => {
         console.log(error)

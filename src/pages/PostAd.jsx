@@ -23,29 +23,37 @@ const PostAd = () => {
     
     const handleSubmit = async (event) => {
       event.preventDefault();
-      
-      if (!formData) {
+    
+      if (!title || !description || !price) {
         setErrorMessage('Please fill in all fields');
         return;
       }
-      
-      await axios.post('http://localhost:4500/ad/post', {
-        title, description, price, userid
-      }, {
-        withCredentials: true
-      })
-      .then (() => {
-        window.location.href = '/homepage';
-      })
-      
-    }
+    
+      await axios
+        .post('http://localhost:4500/ad/post', {
+          title,
+          description,
+          price,
+          userid,
+        }, {
+          withCredentials: true
+        })
+        .then(() => {
+          window.location.href = '/homepage';
+        })
+        .catch(error => {
+          console.log(error);
+          setErrorMessage('An error occurred while posting the ad. Please try again.');
+        });
+    };
+    
     
 
   return (
 
     <div className="w-full bg-emerald-400 pt-24 pb-32">
       <div className="mx-auto w-4/6 rounded-xl shadow-lg bg-white p-10 ">
-        <form handleSubmit={handleSubmit} action="" className="flex flex-col justify-center h-[600px]">
+        <form action="" className="flex flex-col justify-center h-[600px]">
           <label className="my-2 text-emerald-600 font-bold text-xl" htmlFor="">
             Ad Title
           </label>
@@ -62,14 +70,7 @@ const PostAd = () => {
             type="text-Area"
             onChange={e => setDescription(e.target.value)} required
           ></textarea>
-          <label className="my-2 text-emerald-600 font-bold text-xl" htmlFor="">
-            Attach images
-          </label>
-          <input
-            type="file"
-            name="file"
-            className="file:bg-emerald-400 file:rounded-md file:px-3 file:pb-2 file:my-10 file:border-none file:shadow-md file:text-white"
-          />
+          
           <div className="flex w-1/5 items-center my-10">
             <label
               className="my-2 text-emerald-600 font-bold text-xl"
@@ -84,18 +85,11 @@ const PostAd = () => {
             />
             <span className="text-emerald-500 font-bold">Rupees</span>
           </div>
-          <button type='submit' className="mx-auto block bg-emerald-400 rounded-full py-2 px-8 font-bold text-white mt-10 hover:-translate-y-1 transition-transform active:translate-y-1">
+          <button onClick={handleSubmit} type='submit' className="mx-auto block bg-emerald-400 rounded-full py-2 px-8 font-bold text-white mt-10 hover:-translate-y-1 transition-transform active:translate-y-1">
             Post Ad
           </button>
         </form>
-          {/* <button onClick={() => {
-    setPostAdBtn(true);
-    postAd();
-}} className="mx-auto block bg-emerald-400 rounded-full py-2 px-8 font-bold text-white mt-10 hover:-translate-y-1 transition-transform active:translate-y-1">
-            Post Ad
-          </button> */}
-          {/* fix this part */}
-          {errorMessage && <div>{errorMessage}</div>}
+          {errorMessage && <div className="text-red-600">{errorMessage}</div>}
       </div>
       <ConfirmationPopUp trigger={postAdBtn} setTrigger={setPostAdBtn} setPrevTrig={()=>{}}/>
     </div>

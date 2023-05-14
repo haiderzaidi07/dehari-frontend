@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import { useLocation } from 'react-router-dom'
 import PreLoader from './PreLoader'
-
+import NotContentFound from './notContentFound'
+import ShowAd from './ShowAd'
 
 const OfferUserGot = () => {
+  const [popUp,setPopUp]=useState(false);
   const [preloader, setPreloader] = useState(true);
   const location = useLocation()
   const [offersIGot, setOffersIGot] = useState([])
@@ -61,9 +63,15 @@ const OfferUserGot = () => {
     </div>
   ) : (
     <>
-      {
+      {offersIGot.length === 0 ? (
+        <NotContentFound/>
+      ) : (
         offersIGot.map(offer => (
+          <>
+             <ShowAd title={offer.adtitle} description={offer.ad_description} amount={offer.bid} madeBy={""} trigger={popUp} setTrigger={setPopUp} />
           <div>
+
+
             <div class="my-2 text-sm transition-transform hover:-translate-y-2 duration-500 flex justify-between border-2 border-green-600 p-4 bg-gray-50 shadow-lg">
               <div class="w-3/5">
 
@@ -77,15 +85,18 @@ const OfferUserGot = () => {
               <div class="w-1/5 mt-14">
                 <span class="font-bold text-green-600">Status:</span>
                 {/* <!-- add class bg-green-600 to the span tag you want to fill --> */}
-                <button className="border-2 border-green-600 my-1 rounded-full w-28 hover:text-white hover:bg-green-600 hover:opacity-100 transiton-colors" onClick={() => acceptButtonClick(offer.bidid, offer.adid)}>Accept</button>
-                <button className="border-2 border-green-600 my-1 rounded-full w-28 hover:text-white hover:bg-green-600 hover:opacity-100 transiton-colors" onClick={() => rejectButtonClick(offer.bidid, offer.adid)}>Reject</button>
-                <button class="border-2 border-green-600 my-1 rounded-full w-28 hover:text-white hover:bg-green-600 hover:opacity-100 transiton-colors" >Chat</button>
+                <button className="border-2 text-green-600 border-green-600 my-1 rounded-full w-28 hover:text-white hover:bg-green-600 hover:opacity-100 transiton-colors" onClick={() => acceptButtonClick(offer.bidid, offer.adid)}>Accept</button>
+                <button className="border-2 text-green-600 border-green-600 my-1 rounded-full w-28 hover:text-white hover:bg-green-600 hover:opacity-100 transiton-colors" onClick={() => rejectButtonClick(offer.bidid, offer.adid)}>Reject</button>
+                {/* <button class="border-2 border-green-600 my-1 rounded-full w-28 hover:text-white hover:bg-green-600 hover:opacity-100 transiton-colors" >Chat</button> */}
+                <button onClick={()=>{setPopUp(true)}} className=" hover:bg-green-600 hover:text-white bg-white rounded-full border-2 border-green-600 text-green-600 w-28 my-1">Show Ad</button>
+
 
               </div>
             </div>
 
           </div>
-        ))}
+          </>
+        )))}
     </>
   )
 }

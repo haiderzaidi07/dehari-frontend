@@ -8,8 +8,8 @@ const AdList = (e) => {
   const [preloader, setPreLoader] = useState(true);
   const [ads, setAds] = useState([]);
   const [ad, setAd] = useState({});
-  // const [searchQuery, setSearchQuery] = useState('');
-  // const [filteredAds, setFilteredAds] = useState(ads);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredAds, setFilteredAds] = useState(ads);
 
 
   useEffect(() => {
@@ -31,16 +31,27 @@ const AdList = (e) => {
     setFullAdPopUpBtn(value, value2);
     setAd(value2);
   }
-  // const handleSearch = (query) => {
-  //   const filteredList = ads.filter((ad) => {
-  //     // Filter based on your desired conditions
-  //     // For example, searching by ad title or description
-  //     return ad.title.toLowerCase().includes(query.toLowerCase()) ||
-  //       ad.description.toLowerCase().includes(query.toLowerCase());
-  //   });
+  const handleSearch = (query) => {
+  setSearchQuery(query); // Update the search query state
 
-  //   setFilteredAds(filteredList);
-  // };
+  if (query.trim() === '') {
+    // If the query is empty, reset the filtered ads to the original ads
+    setFilteredAds(ads);
+  } else {
+    const filteredList = ads.filter((ad) => {
+      // Filter based on your desired conditions
+      // For example, searching by ad title or description
+      return (
+        ad.title.toLowerCase().includes(query.toLowerCase()) ||
+        ad.description.toLowerCase().includes(query.toLowerCase())
+      );
+    });
+
+    setFilteredAds(filteredList);
+  }
+};
+
+  
 
 
 
@@ -54,18 +65,22 @@ const AdList = (e) => {
               Jobs of your domain
             </h1>
             <form action="">
-              <input
-                class="border-[1px] border-emerald-400 rounded-l-full py-2 px-4 my-4 w-5/6"
-                type="text"
-                placeholder="Type something..."
-              // value={searchQuery}
-              // onChange={(e) => handleSearch(e.target.value)}
-              />
-              <input
-                type="button"
-                value="Search"
-                class="border-[1px] border-emerald-400 bg-emerald-400 text-white rounded-r-full py-2 px-4 my-4 -ml-2"
-              />
+            <input
+  class="border-[1px] border-emerald-400 rounded-l-full py-2 px-4 my-4 w-5/6"
+  type="text"
+  placeholder="Type something..."
+  value={searchQuery}
+  onChange={(e) => handleSearch(e.target.value)}
+/>
+
+
+<input
+  type="button"
+  value="Search"
+  class="border-[1px] border-emerald-400 bg-emerald-400 text-white rounded-r-full py-2 px-4 my-4 -ml-2"
+  onClick={() => handleSearch(searchQuery)}
+/>
+
             </form>
 
           </div>
@@ -78,10 +93,13 @@ const AdList = (e) => {
             ) :
             (
               <div>
-                    {/* <!-- Ad  --> */ }
-                    {
-                      <Ads handleFullAdPopUp={handleFullAdPopUp} ads={ads} />
-                    }
+                    {/* <!-- Ad  --> */}
+{filteredAds.length > 0 ? (
+  <Ads handleFullAdPopUp={handleFullAdPopUp} ads={filteredAds} />
+) : (
+  <Ads handleFullAdPopUp={handleFullAdPopUp} ads={ads} />
+)}
+
                   </div>
                 )
           }

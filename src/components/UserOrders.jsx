@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useLocation } from 'react-router-dom'
 import PreLoader from './PreLoader'
-
+import NotContentFound from './notContentFound'
+import ShowAd from './ShowAd'
 const UserOrders = () => {
 
   const [preloader, setPreloader] = useState(true);
+  const [popUp,setPopUp]=useState(false);
   const [currentOrders, setCurrentOrders] = useState([
     {
 
@@ -46,9 +48,13 @@ const UserOrders = () => {
   ) :
     (
       <>
-        {
+
+        {currentOrders.length === 0 ? ( // Check if userAds is empty
+        <NotContentFound /> // Render No Content Found component
+        ) : (
           currentOrders.map(order => (
             <div>
+              <ShowAd title={order.adtitle} description={order.ad_description} amount={order.bid} madeBy={""} trigger={popUp} setTrigger={setPopUp} />
               <div class="my-2 text-sm transition-transform hover:-translate-y-2 duration-500 flex justify-between border-2 border-green-600 p-4 bg-gray-50 shadow-lg" key={order.id}>
                 <div class="w-3/5">
 
@@ -63,13 +69,14 @@ const UserOrders = () => {
                   <span class="font-bold text-green-600">Status:</span>
                   {/* <!-- add class bg-green-600 to the span tag you want to fill --> */}
                   <button class="border-2 border-green-600 my-1 rounded-full w-28 hover:text-white hover:bg-green-600 hover:opacity-100 transiton-colors" onClick={() => alterOrder(order.adid)}>Completed</button>
-                  <button class="border-2 border-green-600 my-1 rounded-full w-28 hover:text-white hover:bg-green-600 hover:opacity-100 transiton-colors" >Chat</button>
                   <button class="border-2 border-green-600 my-1 rounded-full w-28 hover:text-white hover:bg-green-600 hover:opacity-100 transiton-colors" onClick={() => alterOrder(order.adid)}>Forfeit</button>
+                <button onClick={()=>{setPopUp(true)}} className=" hover:bg-green-600 hover:text-white bg-white rounded-full border-2 border-green-600 text-green-600 w-28 my-1">Show Ad</button>
+
 
                 </div>
               </div>
             </div>
-          ))
+          )))
         }
       </>
     )
