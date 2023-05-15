@@ -83,10 +83,12 @@ const OfferUserGot = () => {
                 <span class="font-bold text-green-600">Bid given: Rs. {offer.bid}</span>
               </div>
               <div class="w-1/5 mt-14">
-                <span class="font-bold text-green-600">Status:</span>
+                <span class="font-bold text-green-600 block">Status:</span>
                 {/* <!-- add class bg-green-600 to the span tag you want to fill --> */}
                 <button className="border-2 text-green-600 border-green-600 my-1 rounded-full w-28 hover:text-white hover:bg-green-600 hover:opacity-100 transiton-colors" onClick={() => acceptButtonClick(offer.bidid, offer.adid)}>Accept</button>
                 <button className="border-2 text-green-600 border-green-600 my-1 rounded-full w-28 hover:text-white hover:bg-green-600 hover:opacity-100 transiton-colors" onClick={() => rejectButtonClick(offer.bidid, offer.adid)}>Reject</button>
+                <button className="border-2 text-green-600 border-green-600 my-1 rounded-full w-28 hover:text-white hover:bg-green-600 hover:opacity-100 transiton-colors">Email</button>
+
                 {/* <button class="border-2 border-green-600 my-1 rounded-full w-28 hover:text-white hover:bg-green-600 hover:opacity-100 transiton-colors" >Chat</button> */}
                 <button onClick={()=>{setPopUp(true)}} className=" hover:bg-green-600 hover:text-white bg-white rounded-full border-2 border-green-600 text-green-600 w-28 my-1">Show Ad</button>
 
